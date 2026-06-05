@@ -123,7 +123,7 @@ function ButtonLink({
   size = "md",
   fullWidth = false,
   loading = false,
-  className = "",
+  className = "!text-neutral-white",
   href,
   children,
   ...props

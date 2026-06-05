@@ -19,7 +19,7 @@ export function CTABanner({
 
   return (
     <section
-      className={`${isDark ? "bg-neutral-200" : "bg-brand-200"}`}
+      className={`${isDark ? "bg-brand-900" : ""}`}
     >
       <div className="container-wide py-section-md">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
@@ -43,7 +43,7 @@ export function CTABanner({
             href={buttonHref}
             variant={isDark ? "primary" : "secondary"}
             size="lg"
-            className="shrink-0"
+            className="shrink-0 bg-surface-100"
           >
             {buttonText}
           </ButtonLink>

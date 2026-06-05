@@ -179,7 +179,7 @@ export default function HomePage() {
             How We Work
           </p>
           <h2 className="text-balance">From Inquiry to Delivery</h2>
-          <p className="mt-3 text-neutral-600 max-w-2xl mx-auto">
+          <p className="mt-3 text-neutral-600 mt-1 mx-auto">
             A streamlined process designed around your timeline. Four clear
             stages, one dedicated team, zero surprises.
           </p>
