@@ -27,16 +27,13 @@ export function CategoryCard({
         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         label={name}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-neutral-black/70 via-neutral-black/20 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-neutral-black/80 via-neutral-black/20 to-transparent" />
       <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 z-10">
-        <h3 className="text-white text-xl md:text-2xl font-heading font-semibold mb-2">
-          {name}
-        </h3>
-        <p className="text-white/80 text-sm md:text-base leading-relaxed line-clamp-2">
+        <span className="text-white text-xs md:text-base leading-relaxed line-clamp-2">
           {description}
-        </p>
-        <span className="inline-flex items-center gap-1.5 mt-4 text-sm font-medium text-white group-hover:gap-2.5 transition-all duration-300">
-          Explore Category
+        </span>
+        <span className="inline-flex items-center gap-1.5 mt-4 text-lg font-medium text-white group-hover:gap-2.5 transition-all duration-300">
+          Explore {name}
           <svg
             className="w-4 h-4"
             viewBox="0 0 20 20"

@@ -19,7 +19,7 @@ export function CTABanner({
 
   return (
     <section
-      className={`${isDark ? "bg-neutral-900" : "bg-brand-700"}`}
+      className={`${isDark ? "bg-neutral-200" : "bg-brand-200"}`}
     >
       <div className="container-wide py-section-md">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">

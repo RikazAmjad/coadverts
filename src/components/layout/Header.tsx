@@ -51,19 +51,21 @@ export function Header() {
       }`}
     >
       <nav className="container-wide" aria-label="Main navigation">
-        <div className="flex items-center justify-between h-16 md:h-18">
+        <div className="flex items-center justify-between h-16 md:h-18 gap-2">
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center shrink-0"
+            className="flex items-center shrink-0 gap-1"
             aria-label="CoAdverts — Home"
           >
-            <div className=" rounded-md flex items-center justify-center">
-              <Image src="/images/logo.png" alt="Logo" width={50} height={50} className="object-contain" />
+            <div className="w-8 h-8 bg-brand-600 rounded-md flex items-center justify-center">
+              <span className="text-white font-bold text-sm">
+                CA
+              </span>
             </div>
-            <span className="text-xl mt-1 font-semibold text-brand-700 tracking-tight font-body">
+            <h4 className="text-xl mt-1 font-semibold tracking-tight font-body">
               CoAdverts
-            </span>
+            </h4>
           </Link>
 
           {/* Desktop Nav */}

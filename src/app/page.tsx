@@ -27,18 +27,18 @@ export default function HomePage() {
 
         <div className="container-wide relative z-10">
           <div className="py-28 md:py-36 lg:py-44 max-w-2xl">
-            <p className="text-brand-500 text-sm font-semibold uppercase tracking-widest mb-4 font-body">
+            <span className="text-brand-100 text-sm font-semibold uppercase tracking-widest mb-4 font-body">
               Wholesale Bag Manufacturing
-            </p>
+            </span>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-heading text-white font-bold leading-[1.1] tracking-tight">
               <span className="text-brand-100">Crafted for Scale.</span>
               <br />
               <span className="text-brand-100">Designed for Impact.</span>
             </h1>
-            <p className="mt-6 text-lg  leading-relaxed max-w-lg">
+            <span className="mt-6 text-lg text-brand-100 leading-relaxed max-w-lg">
               Premium custom bags manufactured to your exact specifications.
               From concept to container — trusted by brands across 40+ countries.
-            </p>
+            </span>
             <div className="mt-8 flex flex-wrap gap-4">
               <ButtonLink href="/products" size="lg" className="!text-neutral-white">
                 Explore Products
