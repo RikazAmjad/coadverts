@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, type FormEvent } from "react";
+import { useState, useEffect, type FormEvent } from "react";
+import { useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { Select } from "@/components/ui/Select";
@@ -13,6 +14,7 @@ interface FormErrors {
 }
 
 export function ContactForm() {
+  const searchParams = useSearchParams();
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [serverError, setServerError] = useState("");
@@ -33,6 +35,13 @@ export function ContactForm() {
     customImage: "",
     customImageName: "",
   });
+
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    if (categoryParam) {
+      setFormData((prev) => ({ ...prev, category: categoryParam }));
+    }
+  }, [searchParams]);
 
   function handleChange(
     e: React.ChangeEvent<

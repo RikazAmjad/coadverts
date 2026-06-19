@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { contactFormSchema } from "@/lib/validation";
 import { rateLimit } from "@/lib/rate-limit";
+import { supabase } from "@/lib/supabase";
+import crypto from "crypto";
 
 function getClientIP(request: NextRequest): string {
   const forwarded = request.headers.get("x-forwarded-for");
@@ -99,7 +101,74 @@ export async function POST(request: NextRequest) {
       customQuantity,
     } = result.data;
 
-    // Sanitize all inputs for email content
+    // 1. Process Attachment Upload to Supabase Storage
+    let customImageUrl: string | null = null;
+    let fileBuffer: Buffer | null = null;
+    let fileContentType: string | null = null;
+
+    if (hasCustomBag && customImage && customImageName) {
+      const matches = customImage.match(/^data:(.+);base64,(.+)$/);
+      if (matches && matches.length === 3) {
+        fileContentType = matches[1];
+        const base64Data = matches[2];
+        fileBuffer = Buffer.from(base64Data, "base64");
+        
+        // Random UUID filename for zero-trust protection
+        const fileExt = customImageName.split(".").pop() || "png";
+        const fileName = `${crypto.randomUUID()}.${fileExt}`;
+        
+        try {
+          const { data: uploadData, error: uploadError } = await supabase.storage
+            .from("inquiries")
+            .upload(fileName, fileBuffer, {
+              contentType: fileContentType,
+              upsert: true,
+            });
+            
+          if (!uploadError && uploadData) {
+            const { data: urlData } = supabase.storage
+              .from("inquiries")
+              .getPublicUrl(fileName);
+            customImageUrl = urlData?.publicUrl || null;
+          } else {
+            console.error("Storage upload error, falling back to base64 URL:", uploadError);
+            customImageUrl = customImage; // fallback
+          }
+        } catch (storageErr) {
+          console.error("Storage upload exception, falling back to base64 URL:", storageErr);
+          customImageUrl = customImage; // fallback
+        }
+      }
+    }
+
+    // 2. Save Inquiry Submission to Database
+    try {
+      const { error: dbError } = await supabase
+        .from("inquiry_submissions")
+        .insert({
+          name,
+          company,
+          email,
+          phone: phone || null,
+          category: category || "General Inquiry",
+          quantity: quantity || "Not specified",
+          message,
+          has_custom_bag: hasCustomBag || false,
+          custom_description: customDescription || null,
+          custom_quantity: customQuantity || null,
+          custom_image_name: customImageName || null,
+          custom_image_url: customImageUrl,
+          ip_address: ip,
+        });
+        
+      if (dbError) {
+        console.error("Failed to save inquiry to database:", dbError);
+      }
+    } catch (dbErr) {
+      console.error("Database logging exception:", dbErr);
+    }
+
+    // 3. Build & Dispatch SMTP Email
     const safe = {
       name: sanitize(name),
       company: sanitize(company),
@@ -113,7 +182,6 @@ export async function POST(request: NextRequest) {
       customImageName: customImageName ? sanitize(customImageName) : "",
     };
 
-    // Build email
     const emailHtml = `
       <div style="font-family: 'Inter', Arial, sans-serif; max-width: 600px; margin: 0 auto;">
         <div style="background-color: #556B2F; padding: 24px 32px;">
@@ -186,7 +254,6 @@ export async function POST(request: NextRequest) {
       </div>
     `;
 
-    // Send email
     const smtpHost = process.env.SMTP_HOST;
     const smtpPort = parseInt(process.env.SMTP_PORT || "587", 10);
     const smtpUser = process.env.SMTP_USER;
@@ -215,17 +282,12 @@ export async function POST(request: NextRequest) {
     });
 
     const attachments = [];
-    if (hasCustomBag && customImage && customImageName) {
-      const matches = customImage.match(/^data:(.+);base64,(.+)$/);
-      if (matches && matches.length === 3) {
-        const contentType = matches[1];
-        const base64Data = matches[2];
-        attachments.push({
-          filename: customImageName,
-          content: Buffer.from(base64Data, "base64"),
-          contentType: contentType,
-        });
-      }
+    if (fileBuffer && fileContentType && customImageName) {
+      attachments.push({
+        filename: customImageName,
+        content: fileBuffer,
+        contentType: fileContentType,
+      });
     }
 
     await transporter.sendMail({

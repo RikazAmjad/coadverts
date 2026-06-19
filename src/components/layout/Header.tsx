@@ -1,15 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 import { ButtonLink } from "@/components/ui/Button";
-import Image from "next/image";
 
 const navLinks = [
   { href: "/", label: "Home" },
-  { href: "/products", label: "Products" },
-  { href: "/contact", label: "Contact" },
+  {
+    href: "/products",
+    label: "Products",
+    subLinks: [
+      { href: "/products/bags", label: "Bags" },
+      { href: "/products/gloves", label: "Safety Gloves" },
+      { href: "/products/towels-bathrobes", label: "Towels & Bathrobes" },
+      { href: "/products/tshirts-beanies", label: "T-Shirts & Beanies" },
+      { href: "/products/bandanas", label: "Bandanas & Neckwear" },
+    ],
+  },
+  { href: "/services", label: "Services" },
+  { href: "/certifications", label: "Certifications" },
+  { href: "/references", label: "References" },
+  { href: "/contact", label: "Contact Us" },
 ];
 
 export function Header() {
@@ -55,36 +68,96 @@ export function Header() {
           {/* Logo */}
           <Link
             href="/"
-            className="flex items-center shrink-0 gap-1"
-            aria-label="CoAdverts — Home"
+            className="flex items-center shrink-0 gap-2"
+            aria-label="CoAdvert — Home"
           >
-            <div className="w-8 h-8 bg-brand-600 rounded-md flex items-center justify-center">
-              <span className="text-white font-bold text-sm">
-                CA
-              </span>
-            </div>
-            <h4 className="text-xl mt-1 font-semibold tracking-tight font-body">
-              CoAdverts
-            </h4>
+            <Image
+              src="/images/coadvert-logo.png"
+              alt="CoAdvert logo"
+              width={120}
+              height={40}
+              className="h-10 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden md:flex items-center gap-8">
             <ul className="flex items-center gap-1">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`px-4 py-2 text-sm font-medium rounded-md transition-base ${
-                      pathname === link.href
-                        ? "text-brand-700 bg-brand-50"
-                        : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const hasSubLinks = link.subLinks && link.subLinks.length > 0;
+                const isActive =
+                  pathname === link.href ||
+                  (hasSubLinks && link.subLinks.some((sub) => pathname === sub.href));
+
+                if (hasSubLinks) {
+                  return (
+                    <li key={link.href} className="relative group">
+                      <Link
+                        href={link.href}
+                        className={`flex items-center gap-1 px-4 py-2 text-sm font-medium rounded-md transition-base ${
+                          isActive
+                            ? "text-brand-700 bg-brand-50"
+                            : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
+                        }`}
+                      >
+                        {link.label}
+                        <svg
+                          className="w-4 h-4 transition-transform duration-200 group-hover:rotate-180"
+                          viewBox="0 0 20 20"
+                          fill="currentColor"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                      </Link>
+
+                      {/* Dropdown Menu */}
+                      <div className="absolute left-0 top-full pt-1 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                        <div className="rounded-lg bg-neutral-white border border-neutral-200 shadow-elevated p-1.5">
+                          <ul className="flex flex-col gap-0.5">
+                            {link.subLinks.map((sub) => {
+                              const isSubActive = pathname === sub.href;
+                              return (
+                                <li key={sub.href}>
+                                  <Link
+                                    href={sub.href}
+                                    className={`block px-3.5 py-2 text-xs font-medium rounded-md transition-base ${
+                                      isSubActive
+                                        ? "text-brand-700 bg-brand-50"
+                                        : "text-neutral-600 hover:text-brand-700 hover:bg-neutral-50"
+                                    }`}
+                                  >
+                                    {sub.label}
+                                  </Link>
+                                </li>
+                              );
+                            })}
+                          </ul>
+                        </div>
+                      </div>
+                    </li>
+                  );
+                }
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={`px-4 py-2 text-sm font-medium rounded-md transition-base ${
+                        pathname === link.href
+                          ? "text-brand-700 bg-brand-50"
+                          : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
             <ButtonLink href="/contact" size="sm" className="!text-neutral-white">
               Get a Quote
@@ -119,20 +192,48 @@ export function Header() {
             className="md:hidden border-t border-neutral-200 py-4 pb-6"
           >
             <ul className="flex flex-col gap-1">
-              {navLinks.map((link) => (
-                <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    className={`block px-4 py-2.5 text-sm font-medium rounded-md transition-base ${
-                      pathname === link.href
-                        ? "text-brand-700 bg-brand-50"
-                        : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                </li>
-              ))}
+              {navLinks.map((link) => {
+                const hasSubLinks = link.subLinks && link.subLinks.length > 0;
+                const isActive =
+                  pathname === link.href ||
+                  (hasSubLinks && link.subLinks.some((sub) => pathname === sub.href));
+
+                return (
+                  <li key={link.href}>
+                    <Link
+                      href={link.href}
+                      className={`block px-4 py-2.5 text-sm font-medium rounded-md transition-base ${
+                        isActive
+                          ? "text-brand-700 bg-brand-50"
+                          : "text-neutral-600 hover:text-neutral-900 hover:bg-neutral-100"
+                      }`}
+                    >
+                      {link.label}
+                    </Link>
+                    {hasSubLinks && (
+                      <ul className="pl-6 pr-4 py-1 flex flex-col gap-1 border-l-2 border-brand-100 ml-6 mt-1 mb-2">
+                        {link.subLinks.map((sub) => {
+                          const isSubActive = pathname === sub.href;
+                          return (
+                            <li key={sub.href}>
+                              <Link
+                                href={sub.href}
+                                className={`block px-3 py-1.5 text-xs font-medium rounded-md transition-base ${
+                                  isSubActive
+                                    ? "text-brand-700 bg-brand-50"
+                                    : "text-neutral-600 hover:text-brand-700 hover:bg-neutral-50"
+                                }`}
+                              >
+                                {sub.label}
+                              </Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    )}
+                  </li>
+                );
+              })}
             </ul>
             <div className="mt-4 px-4">
               <ButtonLink href="/contact" size="md" fullWidth>
