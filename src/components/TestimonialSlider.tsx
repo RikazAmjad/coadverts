@@ -3,17 +3,10 @@
 import { useState, useCallback } from "react";
 import Image from "next/image";
 
-interface Reference {
-  id: string;
-  clientName: string;
-  industry: string;
-  region: string;
-  logo: string;
-  note: string;
-}
+import { ReferenceBlock } from "@/types";
 
 interface TestimonialSliderProps {
-  references: Reference[];
+  references: ReferenceBlock[];
 }
 
 export function TestimonialSlider({ references }: TestimonialSliderProps) {
