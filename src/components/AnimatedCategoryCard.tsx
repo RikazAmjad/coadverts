@@ -49,7 +49,7 @@ export function AnimatedCategoryCard({ category, index }: AnimatedCategoryCardPr
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
         {/* Visuals */}
-        <div className={`relative aspect-[4/3] w-full rounded-none overflow-hidden ${isEven ? "md:order-1" : "md:order-2"}`}>
+        <div className={`relative aspect-[4/3] w-full rounded-xl overflow-hidden ${isEven ? "md:order-1" : "md:order-2"}`}>
           <Image 
             src={category.image} 
             alt={category.name} 
@@ -70,7 +70,7 @@ export function AnimatedCategoryCard({ category, index }: AnimatedCategoryCardPr
             <ButtonLink 
               href={`/products/${category.id}`} 
               variant="outline"
-              className="border-neutral-900 text-neutral-900 hover:bg-neutral-900 hover:text-white transition-colors"
+              className="border-neutral-900 text-neutral-900 hover:bg-brand-800 hover:text-white mt-1 transition-colors"
             >
               Explore {category.name}
             </ButtonLink>

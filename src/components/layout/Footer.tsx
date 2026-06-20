@@ -14,9 +14,12 @@ const quickLinks = [
 const productLinks = [
   { href: "/products/bags", label: "Bags" },
   { href: "/products/gloves", label: "Safety Gloves" },
-  { href: "/products/towels-bathrobes", label: "Towels & Bathrobes" },
-  { href: "/products/tshirts-beanies", label: "T-Shirts & Beanies" },
-  { href: "/products/bandanas", label: "Bandanas & Neckwear" },
+  { href: "/products/towels-bathrobes", label: "Towels" },
+  { href: "/products/tshirts-beanies", label: "T-Shirts" },
+  { href: "/products/bandanas", label: "Bandanas" },
+  { href: "/products/caps", label: "Caps & Headwear" },
+  { href: "/products/bedsheet-linen", label: "Bedsheets" },
+  { href: "/products/rugs-carpets", label: "Rugs & Carpets" },
 ];
 
 export function Footer() {
@@ -28,7 +31,7 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-2.5 mb-6">
               <Image
-                src="/images/coadvert-logo.png"
+                src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781990237/Logo_CoAdvert_New_bxed4p.png"
                 alt="CoAdvert logo"
                 width={110}
                 height={36}

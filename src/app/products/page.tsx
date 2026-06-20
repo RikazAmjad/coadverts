@@ -18,7 +18,7 @@ export default async function ProductsPage() {
     <>
       <PageHeader
         title="Product Catalog"
-        subtitle="We manufacture wholesale textiles and safety products across 5 major product families, built to exact specifications for global distributors."
+        subtitle="We manufacture wholesale textiles and safety products across 8 major product families, built to exact specifications for global distributors."
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Products" },

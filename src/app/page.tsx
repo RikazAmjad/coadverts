@@ -34,9 +34,6 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
             {/* Left Content */}
             <div className="max-w-2xl relative z-20">
-              <span className="text-brand-800 text-xs md:text-sm font-semibold uppercase tracking-widest mb-6 block font-body bg-brand-100/80 backdrop-blur-sm px-4 py-2 rounded-full w-fit border border-brand-200">
-                CoAdvert AB Sweden • MH Tex Pakistan
-              </span>
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading text-neutral-900 font-bold leading-[1.08] tracking-tight">
                 <span className="text-brand-700">Quality Products.</span>
                 <br />
@@ -47,6 +44,9 @@ export default function HomePage() {
                 years in cotton and textile manufacturing, delivering to customers
                 across the world.
               </p>
+              <span className="text-brand-800 text-xs md:text-sm font-semibold uppercase tracking-widest mb-6 block font-body bg-brand-100/80 backdrop-blur-sm px-4 py-2 rounded-full w-fit border border-brand-200 my-2">
+                CoAdvert AB Sweden • MH Tex Pakistan
+              </span>
               <div className="mt-10 flex flex-wrap gap-4">
                 <ButtonLink
                   href="/products"
@@ -87,7 +87,7 @@ export default function HomePage() {
               <div className="absolute top-10 right-[10%] lg:right-[70%] z-20 w-40 md:w-48 aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border border-white/50 bg-white p-2">
                 <div className="relative w-full h-full rounded-lg overflow-hidden bg-neutral-100">
                   <Image
-                    src="/images/product-cotton-bags.jpg"
+                    src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg"
                     alt="Cotton Bag"
                     fill
                     className="object-cover"
@@ -98,8 +98,8 @@ export default function HomePage() {
               <div className="absolute bottom-16 right-[55%] lg:right-[65%] z-30 w-44 md:w-52 aspect-square rounded-xl overflow-hidden shadow-2xl border border-white/50 bg-white p-2">
                 <div className="relative w-full h-full rounded-lg overflow-hidden bg-neutral-100">
                   <Image
-                    src="/images/product-cotton-bags-2.jpg"
-                    alt="Organic Cotton Bag"
+                    src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905036/45993898_189564455283064_1450101913998589952_n_q1krvn.jpg"
+                    alt="Customized Cap"
                     fill
                     className="object-cover"
                   />
@@ -109,8 +109,8 @@ export default function HomePage() {
               <div className="absolute top-1/3 -right-4 lg:-right-8 z-10 w-32 md:w-40 aspect-square rounded-xl overflow-hidden shadow-xl border border-white/50 bg-white p-2 hidden md:block">
                 <div className="relative w-full h-full rounded-lg overflow-hidden bg-neutral-100">
                   <Image
-                    src="/images/product-tshirts.png"
-                    alt="T-Shirt"
+                    src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905109/JackAndCoke_logo_tshirt-skiss_dga62d.png"
+                    alt="Customized T-Shirt"
                     fill
                     className="object-cover"
                   />
@@ -127,7 +127,7 @@ export default function HomePage() {
           {/* Image */}
           <div className="lg:col-span-5 relative aspect-[4/5] rounded-xl overflow-hidden shadow-xl border-white hover:scale-105 transition-all duration-500 cursor-pointer">
             <PlaceholderImage
-              src="/images/hero-bags.jpg"
+              src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813293/P%C3%A5sar0005_i4ukgn.jpg"
               alt="CoAdvert handwoven cotton bags displayed in store"
               fill
               className="object-cover"

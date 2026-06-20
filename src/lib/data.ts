@@ -37,8 +37,8 @@ export const productCategories: ProductCategory[] = [
       "Cotton, organic, recycled, non-woven, PP woven, and rug bags. Customised designs, multiple weights and printing options.",
     longDescription:
       "CoAdvert AB Sweden and MH Tex, Pakistan is the legacy of a family associated with cotton and cotton products for the last 47 years. Cotton being biodegradable, natural and breathable fabric has been used by humans for thousands of years. Cotton Bags provide long-time durability and most impressions than any other give-away product.",
-    image: "/images/product-cotton-bags.jpg",
-    heroImage: "/images/hero-bags.jpg",
+    image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg",
+    heroImage: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg",
     certifications: ["gots", "gots-cu", "fairtrade", "oeko-tex", "recycled", "ethically-made"],
     subcategories: [
       {
@@ -54,20 +54,20 @@ export const productCategories: ProductCategory[] = [
           "Webbing Cotton, Rope Handles and more",
           "Handle length adjusted to your needs",
         ],
-        image: "/images/product-cotton-bags.jpg",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812904/TBC_Mixed_leaves_ih6pe4.jpg",
         gallery: [
-          "/images/bags/cotton-1.jpg",
-          "/images/bags/cotton-2.jpg",
-          "/images/bags/cotton-3.jpg",
-          "/images/bags/cotton-4.jpg",
-          "/images/bags/cotton-5.jpg",
-          "/images/bags/cotton-6.png",
-          "/images/bags/cotton-7.jpg",
-          "/images/bags/cotton-8.jpg",
-          "/images/bags/cotton-9.jpg",
-          "/images/bags/cotton-10.jpg",
-          "/images/bags/cotton-11.jpg",
-          "/images/bags/cotton-12.jpg"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812225/Reused_Remade_CBF_Grass_brokqv.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812223/P%C3%A5sar0005_sjoqed.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812223/P%C3%A5sar0032_egkccz.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812170/CBF_grass_cgoi2z.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812416/46382831_1002646186584734_6042450726939000832_n_bmebjj.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812619/Skiss_totebag_2016_iajxsw.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987948/Red_Sports_Bag_a3gawr.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987950/Wooden_Handels2_s966du.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987998/US_z6gwfg.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988038/Sk%C3%A4rmavbild_2017-12-03_kl._19.35.42_bhugqr.png",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812486/Foto_2015-06-10_11_14_26_oxe4vk.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812388/42281411_472883393225847_2752094182897090560_n_gjucxm.jpg"
         ],
         certificationNote: "Available in GOTS certified organic cotton.",
       },
@@ -84,16 +84,12 @@ export const productCategories: ProductCategory[] = [
           "Non-GMO seeds",
           "Other qualities developed on request",
         ],
-        image: "/images/product-cotton-bags-2.jpg",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813225/organic_02_xkmgu2.jpg",
         gallery: [
-          "/images/bags/organic-1.jpg",
-          "/images/bags/organic-2.jpg",
-          "/images/bags/organic-3.jpg",
-          "/images/bags/organic-4.jpg",
-          "/images/bags/organic-5.jpg",
-          "/images/bags/organic-6.jpg",
-          "/images/bags/organic-7.jpg",
-          "/images/bags/organic-8.jpg"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813226/organic_03_bmv4ep.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813224/organic_01_kl34dl.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813228/organic_05_mq6tik.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813233/organic_04_ilbthy.jpg",
         ],
         certificationNote: "GOTS & Fairtrade certified.",
       },
@@ -110,15 +106,13 @@ export const productCategories: ProductCategory[] = [
           "Fully circular production model",
           "Reduces textile industry waste",
         ],
-        image: "/images/product-cotton-bags.jpg",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813255/Recycled_06_z4ltvp.jpg",
         gallery: [
-          "/images/bags/recycled-1.jpg",
-          "/images/bags/recycled-2.jpg",
-          "/images/bags/recycled-3.jpg",
-          "/images/bags/recycled-4.jpg",
-          "/images/bags/recycled-5.jpg",
-          "/images/bags/recycled-6.jpg",
-          "/images/bags/recycled-7.jpg"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813242/Recycled_04_ugwnb7.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813244/Recycled_01_ewf1gp.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813255/Recycled_07_yb7ld5.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813243/Recycled_02_o4jgju.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813245/Recycled_03_nd2esw.jpg",
         ],
         certificationNote: "Recycled content verified.",
       },
@@ -135,21 +129,17 @@ export const productCategories: ProductCategory[] = [
           "Rotogravure & Silk Screen printing options",
           "Cord and flat handles in hand/shoulder length",
         ],
-        image: "/images/product-cotton-bags.jpg",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813293/P%C3%A5sar0005_i4ukgn.jpg",
         gallery: [
-          "/images/bags/nonwoven-1.jpg",
-          "/images/bags/nonwoven-2.jpg",
-          "/images/bags/nonwoven-3.jpg",
-          "/images/bags/nonwoven-4.jpg",
-          "/images/bags/nonwoven-5.jpg",
-          "/images/bags/nonwoven-6.jpg",
-          "/images/bags/nonwoven-7.jpg",
-          "/images/bags/nonwoven-8.jpg",
-          "/images/bags/nonwoven-9.jpg",
-          "/images/bags/nonwoven-10.jpg",
-          "/images/bags/nonwoven-11.jpg",
-          "/images/bags/nonwoven-12.jpg",
-          "/images/bags/nonwoven-13.jpg"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813291/P%C3%A5sar0032_myqmgx.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813279/T-gusset_non_woven_bag_1_rldws4.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813282/P1_jbmagw.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813278/ultrasonik_iigzzd.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813267/The_first_bag_of_RE-BA_bags_2_g5atyu.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813261/The_first_bag_of_ICA_bags_3_fst2vq.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813266/The_first_bag_of_ICA_bags_5_hxkrej.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813275/Non-woven_T-shirt_Bags_1_zuckmr.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781813280/The_sample_of_ICA_bags_3_zhozow.jpg",
         ],
         certificationNote: "Environment-friendly and reusable.",
       },
@@ -168,10 +158,9 @@ export const productCategories: ProductCategory[] = [
         ],
         image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905365/46373423_342214903001831_1560310955202576384_n_oxnd9n.jpg",
         gallery: [
-          "/images/bags/rug-1.jpg",
-          "/images/bags/rug-2.jpg",
-          "/images/bags/rug-3.jpg",
-          "/images/bags/rug-4.jpg"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905367/46118509_199536640935995_5865761377313882112_n_kthzw4.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905371/46438320_223803594997999_8410083356171042816_n_fm5et5.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905374/_39R7936_vfatwq.jpg",
         ],
         certificationNote: "Handcrafted using recycled materials.",
       },
@@ -184,8 +173,8 @@ export const productCategories: ProductCategory[] = [
       "Wide variety including Nitrile, Vinyl, Cotton, Interlock, Jersey, PVC Dotted, Terry and Sailing Gloves.",
     longDescription:
       "A wide variety to choose from — including Nitrile Gloves, Vinyl Gloves, Cotton Gloves, Interlock, Jersey Gloves, Working Gloves, PVC Dotted Gloves and Terry Gloves. Best-selling promotional and safety items suitable for the European market.",
-    image: "/images/product-gloves.png",
-    heroImage: "/images/product-gloves-2.jpg",
+    image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988988/Sailing_gloves_cfwmvp.jpg",
+    heroImage: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988988/Sailing_gloves_cfwmvp.jpg",
     certifications: [],
     subcategories: [
       {
@@ -201,12 +190,10 @@ export const productCategories: ProductCategory[] = [
           "Light to medium weight",
           "General purpose utility",
         ],
-        image: "/images/product-gloves.png",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988989/Jersey_Gloves_1_zry6gz.jpg",
         gallery: [
-          "/images/gloves/interlock-1.jpg",
-          "/images/gloves/interlock-2.jpg",
-          "/images/gloves/jersey-1.jpg",
-          "/images/gloves/jersey-2.png"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988990/interlock_2_b1xtrd.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988991/interlock_f97hzg.jpg",
         ],
         certificationNote: "Standard cotton safety compliance.",
       },
@@ -223,11 +210,10 @@ export const productCategories: ProductCategory[] = [
           "Heavy-duty working applications",
           "Loading and unloading tasks",
         ],
-        image: "/images/product-gloves-2.jpg",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988987/PVC_Dotted_1_a956bi.jpg",
         gallery: [
-          "/images/gloves/pvc-1.jpg",
-          "/images/gloves/pvc-2.jpg",
-          "/images/gloves/pvc-3.jpg"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988988/PVC_dotted_2_dvugcy.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988989/PVC_dotted_3_sjggcc.jpg",
         ],
         certificationNote: "Work safety compliant.",
       },
@@ -244,10 +230,9 @@ export const productCategories: ProductCategory[] = [
           "Available in different sizes and colours",
           "Ideal for promotional giveaways",
         ],
-        image: "/images/product-gloves-mittens.png",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988989/mittens_gqsagk.png",
         gallery: [
-          "/images/gloves/terry-1.jpg",
-          "/images/gloves/mittens-1.png"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988990/Terry_Gloves_hl00xi.jpg",
         ],
         certificationNote: "Safe for household use.",
       },
@@ -264,9 +249,9 @@ export const productCategories: ProductCategory[] = [
           "Best-selling promotional item",
           "Wide size range",
         ],
-        image: "/images/product-gloves.png",
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988988/Sailing_gloves_cfwmvp.jpg",
         gallery: [
-          "/images/gloves/sailing-1.jpg"
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781988988/Sailing_gloves_cfwmvp.jpg"
         ],
         certificationNote: "Marine-grade waterproof materials.",
       },
@@ -279,8 +264,8 @@ export const productCategories: ProductCategory[] = [
       "All kinds of terry products from 100% Cotton, Organic Cotton, Blended Ring Spun & Open End Yarns.",
     longDescription:
       "All kinds of Terry Products from 100% Cotton, Organic Cotton, Blended Ring Spun & Open End Yarns. Terry Towels (400 to 800 gsm), Bath Mats (600 to 1000 gsm), and Bath Robes (400 to 450 gsm) — available White, Dyed & Pigment Printed.",
-    image: "/images/product-towels.jpg",
-    heroImage: "/images/product-towels.jpg",
+    image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987216/Towel_3_ayxk17.png",
+    heroImage: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987216/Towel_3_ayxk17.png",
     certifications: ["gots", "gots-cu", "oeko-tex"],
     subcategories: [
       {
@@ -296,13 +281,7 @@ export const productCategories: ProductCategory[] = [
           "Ring Spun & Open End Yarns",
           "Bulk hotel and spa supply",
         ],
-        image: "/images/product-towels.jpg",
-        gallery: [
-          "/images/towels/towel-1.png",
-          "/images/towels/towel-2.jpg",
-          "/images/towels/towel-3.png",
-          "/images/towels/towel-4.jpg"
-        ],
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987216/towels_mkahqx.png",
         certificationNote: "GOTS certified organic cotton variant available.",
       },
       {
@@ -318,38 +297,14 @@ export const productCategories: ProductCategory[] = [
           "Hotel and institutional supply",
           "Custom sizes available",
         ],
-        image: "/images/product-towels.jpg",
-        gallery: [
-          "/images/towels/towel-2.jpg",
-          "/images/towels/towel-4.jpg"
-        ],
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987216/towels_3_qhzxl4.jpg",
         certificationNote: "Safe non-toxic dye compliance.",
-      },
-      {
-        id: "bath-robes",
-        name: "Bath Robes",
-        description: "400 to 450 GSM quality bath robes — dyed & pigment printed for hotel and spa.",
-        detailedCopy:
-          "Premium bath robes at 400 to 450 GSM — available dyed and pigment printed. Ideal for hotel, resort, and spa environments with custom embroidery.",
-        features: [
-          "400 to 450 GSM terry",
-          "Dyed & Pigment Printed",
-          "Custom embroidery available",
-          "Hotel, spa and resort supply",
-          "Shawl and kimono collar options",
-        ],
-        image: "/images/product-towels.jpg",
-        gallery: [
-          "/images/towels/towel-1.png",
-          "/images/towels/towel-3.png"
-        ],
-        certificationNote: "OEKO-TEX Standard 100 compliant dyeing.",
       },
     ],
   },
   {
     id: "tshirts-beanies",
-    name: "T-shirts & Cotton Beanies",
+    name: "T-shirts",
     description:
       "Promotional T-shirts in Cotton, Organic Cotton and Cotton-Polyester. High quality 160–210 GSM.",
     longDescription:
@@ -379,28 +334,6 @@ export const productCategories: ProductCategory[] = [
         ],
         certificationNote: "Organic variant is GOTS certified.",
       },
-      {
-        id: "cotton-beanies",
-        name: "Cotton Beanies",
-        description: "Custom knit cotton beanies for winter promotions, retail and corporate gifting.",
-        detailedCopy:
-          "Soft, stretchable cotton beanies perfect for cold-weather promotions, retail collections and corporate gifting. Available with logo embroidery or patch options.",
-        features: [
-          "100% soft cotton or cotton-acrylic blends",
-          "Double-layered knit construction",
-          "Fold-up cuff design",
-          "Embroidered logos or patches",
-          "MOQ: 1,000 units",
-        ],
-        image: "/images/product-tshirts.png",
-        gallery: [
-          "/images/tshirts/beanie-1.jpg",
-          "/images/tshirts/beanie-2.jpg",
-          "/images/tshirts/beanie-3.jpg",
-          "/images/tshirts/beanie-4.jpg"
-        ],
-        certificationNote: "Hypoallergenic cotton yarn certified.",
-      },
     ],
   },
   {
@@ -410,8 +343,8 @@ export const productCategories: ProductCategory[] = [
       "Silk or cotton fabric bandanas dyed with various colours — head, hand, or promotional use.",
     longDescription:
       "A bandana is a silk or cotton fabric that looks like a handkerchief, often dyed with various colours. Mostly worn on the head, around the hand, or carried for symbolic representation of an individual or group.",
-    image: "/images/product-bandanas.png",
-    heroImage: "/images/product-bandanas.png",
+    image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905177/46453102_742532862775986_4458650608479502336_n_jfec9b.jpg",
+    heroImage: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905177/46453102_742532862775986_4458650608479502336_n_jfec9b.jpg",
     certifications: ["oeko-tex"],
     subcategories: [
       {
@@ -441,8 +374,8 @@ export const productCategories: ProductCategory[] = [
     name: "Caps & Headwear",
     description: "Premium cotton and blended caps for promotional and retail purposes.",
     longDescription: "High-quality caps and headwear available in various styles including baseball caps, snapbacks, and dad hats. Fully customizable with embroidery and printing.",
-    image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905041/20141022_142043_ppwa5c.jpg",
-    heroImage: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905041/20141022_142043_ppwa5c.jpg",
+    image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905047/20141006_131930_oansp2.jpg",
+    heroImage: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905047/20141006_131930_oansp2.jpg",
     certifications: ["sgs"],
     subcategories: [
       {
@@ -450,8 +383,20 @@ export const productCategories: ProductCategory[] = [
         name: "Baseball Caps",
         description: "Classic 6-panel baseball caps in premium cotton.",
         features: ["100% Cotton Twill", "Adjustable strap", "Custom embroidery"],
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905036/45993898_189564455283064_1450101913998589952_n_q1krvn.jpg",
+      },
+      {
+        id: "winter-caps",
+        name: "Winter Caps",
+        description: "Premium winter caps for all age groups in premium stuff.",
+        features: ["Premium Cotton", "Premium Stuff", "Embroidery"],
         image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905047/20141006_131930_oansp2.jpg",
-      }
+        gallery: [
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905041/20141022_142043_ppwa5c.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905038/SAM_2183_rvgpoz.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905037/Caps_kjrzfu.jpg"
+        ],
+      },
     ]
   },
   {
@@ -469,6 +414,9 @@ export const productCategories: ProductCategory[] = [
         description: "High thread count pure cotton bedsheets.",
         features: ["100% Pure Cotton", "Available in all standard sizes", "Wrinkle resistant"],
         image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905330/Bedsheet1_mdmrxx.png",
+        gallery: [
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905330/Bedsheet1_mdmrxx.png",
+        ],
       }
     ]
   },
@@ -486,7 +434,23 @@ export const productCategories: ProductCategory[] = [
         name: "Handwoven Rugs",
         description: "Artisanal handwoven rugs made with recycled materials.",
         features: ["Handcrafted", "Custom dimensions", "Eco-friendly materials"],
+        image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905368/IMG_20140326_140749_c48kip.jpg",
+        gallery: [
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905369/IMG_20140326_140911_hjop4t.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905367/IMG_20140326_140056_lmhmqj.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905366/IMG_20140326_140404_nywpdn.jpg"
+        ],
+      },
+      {
+        id: "machine-made-rugs",
+        name: "Machine-Made Rugs",
+        description: "Durable and affordable machine-made rugs for everyday use.",
+        features: ["Machine-made", "Custom dimensions", "Eco-friendly materials"],
         image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905376/Mandal_us5fja.jpg",
+        gallery: [
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905365/Stetind_Blue_jhia7x.jpg",
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905364/46377555_2128526277398073_6092852838172459008_n_1_wgn6yc.jpg",
+        ],
       }
     ]
   }
