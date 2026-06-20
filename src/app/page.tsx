@@ -13,17 +13,8 @@ import {
   features,
   processSteps,
   references,
+  certifications,
 } from "@/lib/data";
-
-const certificates = [
-  { src: "/images/cert-fairtrade.png", alt: "Fairtrade Certified" },
-  {
-    src: "/images/cert-gots.jpg",
-    alt: "GOTS Certified — Global Organic Textile Standard",
-  },
-  { src: "/images/cert-oekotex.png", alt: "OEKO-TEX Standard 100" },
-  { src: "/images/cert-sedex.gif", alt: "Sedex Member" },
-];
 
 export default function HomePage() {
   return (
@@ -264,18 +255,18 @@ export default function HomePage() {
         <div className="marquee-wrapper group">
           <div className="marquee-track">
             {[
-              ...certificates,
-              ...certificates,
-              ...certificates,
-              ...certificates,
+              ...certifications,
+              ...certifications,
+              ...certifications,
+              ...certifications,
             ].map((cert, i) => (
               <div
                 key={i}
                 className="flex items-center justify-center mx-12 shrink-0"
               >
                 <Image
-                  src={cert.src}
-                  alt={cert.alt}
+                  src={cert.logo}
+                  alt={cert.name}
                   width={100}
                   height={56}
                   className="object-contain"
