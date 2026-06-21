@@ -88,7 +88,7 @@ export default async function ProductsPage() {
                             src={sub.image}
                             alt={sub.name}
                             fill
-                            className="object-cover"
+                            className="object-contain"
                             sizes="(max-width: 768px) 100vw, 25vw"
                             label={sub.name}
                           />

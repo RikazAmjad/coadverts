@@ -1,13 +1,20 @@
 import { forwardRef, type ComponentPropsWithoutRef } from "react";
 
-interface SelectOption {
+export interface SelectOption {
   value: string;
   label: string;
 }
 
+export interface SelectGroup {
+  groupLabel: string;
+  options: SelectOption[];
+}
+
+export type SelectItem = SelectOption | SelectGroup;
+
 interface SelectProps extends Omit<ComponentPropsWithoutRef<"select">, "children"> {
   label: string;
-  options: SelectOption[];
+  options: SelectItem[];
   error?: string;
   helperText?: string;
 }
@@ -48,11 +55,24 @@ const Select = forwardRef<HTMLSelectElement, SelectProps>(
             }
             {...props}
           >
-            {options.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.label}
-              </option>
-            ))}
+            {options.map((item, index) => {
+              if ("groupLabel" in item) {
+                return (
+                  <optgroup key={index} label={item.groupLabel}>
+                    {item.options.map((opt) => (
+                      <option key={opt.value} value={opt.value}>
+                        {opt.label}
+                      </option>
+                    ))}
+                  </optgroup>
+                );
+              }
+              return (
+                <option key={item.value} value={item.value}>
+                  {item.label}
+                </option>
+              );
+            })}
           </select>
           <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
             <svg

@@ -18,7 +18,7 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    default: "CoAdverts — Premium Wholesale Bag Manufacturing",
+    default: "CoAdverts",
     template: "%s | CoAdverts",
   },
   description:
@@ -37,13 +37,13 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "CoAdverts",
-    title: "CoAdverts — Premium Wholesale Bag Manufacturing",
+    title: "CoAdverts",
     description:
       "Custom wholesale bag manufacturing for businesses worldwide. Shopping bags, industrial packaging, promotional bags — all crafted to your specifications.",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CoAdverts — Premium Wholesale Bag Manufacturing",
+    title: "CoAdverts",
     description:
       "Custom wholesale bag manufacturing for businesses worldwide.",
   },

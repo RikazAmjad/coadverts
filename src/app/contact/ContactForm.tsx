@@ -4,9 +4,10 @@ import { useState, useEffect, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { Select } from "@/components/ui/Select";
+import { Select, type SelectItem } from "@/components/ui/Select";
+import { MultiSelect } from "@/components/ui/MultiSelect";
 import { Button } from "@/components/ui/Button";
-import { categoryOptions } from "@/lib/data";
+import { productCategories } from "@/lib/data";
 import type { ContactFormResponse } from "@/types";
 
 interface FormErrors {
@@ -25,8 +26,9 @@ export function ContactForm() {
     name: "",
     company: "",
     email: "",
+    countryCode: "SE",
     phone: "",
-    category: "",
+    categories: [] as string[],
     quantity: "",
     message: "",
     hasCustomBag: false,
@@ -38,8 +40,11 @@ export function ContactForm() {
 
   useEffect(() => {
     const categoryParam = searchParams.get("category");
-    if (categoryParam) {
-      setFormData((prev) => ({ ...prev, category: categoryParam }));
+    const typeParam = searchParams.get("type");
+    if (typeParam) {
+      setFormData((prev) => ({ ...prev, categories: [typeParam] }));
+    } else if (categoryParam) {
+      setFormData((prev) => ({ ...prev, categories: [categoryParam] }));
     }
   }, [searchParams]);
 
@@ -172,8 +177,9 @@ export function ContactForm() {
         name: "",
         company: "",
         email: "",
+        countryCode: "SE",
         phone: "",
-        category: "",
+        categories: [],
         quantity: "",
         message: "",
         hasCustomBag: false,
@@ -224,6 +230,20 @@ export function ContactForm() {
     );
   }
 
+  const productOptions: SelectItem[] = [
+    { value: "", label: "Select a product..." },
+    ...productCategories.map((c) => ({
+      groupLabel: c.name,
+      options: [
+        { value: c.id, label: `All ${c.name}` },
+        ...c.subcategories.map((s) => ({
+          value: s.id,
+          label: s.name,
+        })),
+      ],
+    })),
+  ];
+
   return (
     <form onSubmit={handleSubmit} noValidate>
       {/* Honeypot — hidden from humans */}
@@ -247,7 +267,7 @@ export function ContactForm() {
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-4">
         <Input
           label="Full Name"
           name="name"
@@ -276,22 +296,61 @@ export function ContactForm() {
           required
           error={errors.email}
         />
-        <Input
-          label="Phone"
-          name="phone"
-          type="tel"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="+1 (555) 000-0000"
-          error={errors.phone}
-        />
-        <Select
-          label="Product Category"
-          name="category"
-          value={formData.category}
-          onChange={handleChange}
-          options={categoryOptions}
-          error={errors.category}
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="phone" className="text-sm font-medium text-neutral-900">
+            Phone
+          </label>
+          <div className="relative">
+            <div className="absolute inset-y-0 left-0 flex items-center border-r border-neutral-300 pr-1 pl-2 bg-neutral-50 rounded-l-md">
+              <select
+                name="countryCode"
+                value={formData.countryCode}
+                onChange={handleChange}
+                className="text-sm bg-transparent outline-none h-full text-neutral-700 font-medium cursor-pointer"
+              >
+                <option value="SE">SE (+46)</option>
+                <option value="PK">PK (+92)</option>
+                <option value="US">US (+1)</option>
+                <option value="UK">UK (+44)</option>
+                <option value="EU">EU (+49)</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="70 123 4567"
+              className={`w-full pl-[6.5rem] pr-4 py-2.5 text-sm bg-neutral-white border rounded-md font-body transition-base placeholder:text-neutral-400 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 ${
+                errors.phone
+                  ? "border-error text-error"
+                  : "border-neutral-300 text-neutral-900 hover:border-neutral-400"
+              }`}
+            />
+          </div>
+          {errors.phone && (
+            <p className="text-xs text-error" role="alert">
+              {errors.phone}
+            </p>
+          )}
+        </div>
+        <MultiSelect
+          label="Product Categories"
+          options={productOptions}
+          value={formData.categories}
+          onChange={(newValues) => {
+            setFormData((prev) => ({ ...prev, categories: newValues }));
+            if (errors.categories) {
+              setErrors((prev) => {
+                const next = { ...prev };
+                delete next.categories;
+                return next;
+              });
+            }
+          }}
+          error={errors.categories}
         />
         <Input
           label="Estimated Quantity"
@@ -339,12 +398,12 @@ export function ContactForm() {
 
       {/* Conditional Custom Bag Fields */}
       {formData.hasCustomBag && (
-        <div className="mt-6 p-5 bg-brand-50/50 rounded-lg border border-brand-100/50 space-y-5 transition-all duration-300">
+        <div className="mt-6 bg-brand-50/50 rounded-lg border border-brand-100/50 space-y-5 transition-all duration-300">
           <h4 className="text-sm font-semibold text-brand-700 uppercase tracking-wider font-body">
             Custom Design Requirements
           </h4>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-4">
             <div>
               <label className="block text-sm font-medium text-neutral-900 mb-1.5">
                 Reference Image / Sketch

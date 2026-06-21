@@ -23,7 +23,9 @@ export async function generateStaticParams() {
 
 export const dynamicParams = false;
 
-export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: PageProps): Promise<Metadata> {
   const { family } = await params;
   const category = await ProductService.getCategoryById(family);
   if (!category) return { title: "Category Not Found" };
@@ -40,7 +42,7 @@ export default async function ProductFamilyPage({ params }: PageProps) {
 
   const allCerts = await ProductService.getAllCertifications();
   const categoryCerts = allCerts.filter((cert) =>
-    category.certifications?.includes(cert.id)
+    category.certifications?.includes(cert.id),
   );
 
   return (
@@ -57,8 +59,8 @@ export default async function ProductFamilyPage({ params }: PageProps) {
 
       {/* ===== INTRO SECTION ===== */}
       <SectionWrapper background="white" padding="md">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:items-stretch">
+          <div className="flex flex-col justify-center">
             <span className="text-xs font-semibold text-brand-700 uppercase tracking-widest block mb-2">
               Production Capabilities
             </span>
@@ -73,7 +75,7 @@ export default async function ProductFamilyPage({ params }: PageProps) {
                 <h4 className="text-xs font-bold text-neutral-800 uppercase tracking-widest mb-3">
                   Quality Certifications Active
                 </h4>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-3 mt-1">
                   {categoryCerts.map((cert) => (
                     <div
                       key={cert.id}
@@ -85,7 +87,7 @@ export default async function ProductFamilyPage({ params }: PageProps) {
                         alt={cert.name}
                         width={40}
                         height={40}
-                        className="object-contain"
+                        className="object-cover"
                       />
                     </div>
                   ))}
@@ -93,13 +95,13 @@ export default async function ProductFamilyPage({ params }: PageProps) {
               </div>
             )}
           </div>
-          <div className="relative aspect-[16/10] rounded-xl overflow-hidden shadow-soft">
+          <div className="relative w-full h-full min-h-[250px] overflow-hidden">
             <PlaceholderImage
               src={category.heroImage || category.image}
               alt={category.name}
               fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-contain"
+              // sizes="(max-width: 800px) 80vw, 60vw"
               label={category.name}
             />
           </div>
@@ -117,106 +119,110 @@ export default async function ProductFamilyPage({ params }: PageProps) {
             padding="lg"
           >
             <AnimatedFadeIn delay={100}>
-            {/* Subcategory Header */}
-            <div className="flex flex-col md:flex-row md:items-end gap-4 justify-between mb-8 pb-6 border-b border-neutral-200">
-              <div>
-                <span className="text-[10px] font-semibold text-brand-700 uppercase tracking-widest block mb-1">
-                  Type {String(index + 1).padStart(2, "0")}
-                </span>
-                <h3 className="text-2xl md:text-3xl font-bold font-heading text-neutral-black mb-2">
-                  {sub.name}
-                </h3>
-                <p className="text-sm text-neutral-600 max-w-2xl leading-relaxed">
-                  {sub.description}
-                </p>
-              </div>
-              {sub.certificationNote && (
-                <span className="text-[11px] font-semibold text-brand-700 bg-brand-50 border border-brand-200 px-3 py-1.5 rounded-full shrink-0 self-start md:self-auto">
-                  ✓ {sub.certificationNote}
-                </span>
-              )}
-            </div>
-
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              {/* Specs Column */}
-              <div className={`lg:col-span-4 ${index % 2 !== 0 ? "lg:order-2" : ""}`}>
-                {sub.detailedCopy && (
-                  <p className="text-sm text-neutral-600 leading-relaxed mb-6">
-                    {sub.detailedCopy}
+              {/* Subcategory Header */}
+              <div className="flex flex-col md:flex-row md:items-end gap-4 justify-between mb-8 pb-6 border-b border-neutral-200">
+                <div>
+                  <span className="text-[10px] font-semibold text-brand-700 uppercase tracking-widest block mb-1">
+                    Type {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <h3 className="text-2xl md:text-3xl font-bold font-heading text-neutral-black mb-2">
+                    {sub.name}
+                  </h3>
+                  <p className="text-sm text-neutral-600 max-w-2xl leading-relaxed">
+                    {sub.description}
                   </p>
-                )}
-                <div className="bg-neutral-white border border-neutral-200 rounded-xl p-6 mb-6">
-                  <h4 className="text-xs font-bold text-neutral-800 uppercase tracking-widest mb-4">
-                    Technical Specifications
-                  </h4>
-                  <ul className="space-y-2.5">
-                    {sub.features.map((spec, specIdx) => (
-                      <li key={specIdx} className="flex items-start gap-2.5 text-xs text-neutral-700">
-                        <svg
-                          className="w-4 h-4 text-brand-600 mt-0.5 shrink-0"
-                          viewBox="0 0 20 20"
-                          fill="currentColor"
-                        >
-                          <path
-                            fillRule="evenodd"
-                            d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
-                            clipRule="evenodd"
-                          />
-                        </svg>
-                        {spec}
-                      </li>
-                    ))}
-                  </ul>
                 </div>
-                <ButtonLink
-                  href={`/contact?category=${category.id}&type=${sub.id}`}
-                  variant="primary"
-                  size="md"
-                >
-                  Inquire About {sub.name}
-                </ButtonLink>
+                {sub.certificationNote && (
+                  <span className="text-[11px] font-semibold text-brand-700 bg-brand-50 border border-brand-200 px-3 py-1.5 rounded-full shrink-0 self-start md:self-auto">
+                    ✓ {sub.certificationNote}
+                  </span>
+                )}
               </div>
 
-              {/* Gallery Column — ALL images inline */}
-              <div className={`lg:col-span-8 ${index % 2 !== 0 ? "lg:order-1" : ""}`}>
-                {images.length === 0 ? (
-                  <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200">
-                    <PlaceholderImage
-                      src={sub.image}
-                      alt={sub.name}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 1024px) 100vw, 60vw"
-                      label={sub.name}
-                    />
-                  </div>
-                ) : (
-                  <div>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {images.map((img, i) => (
-                        <div
-                          key={i}
-                          className="group relative aspect-square rounded-lg overflow-hidden bg-neutral-100 border border-neutral-200 hover:border-brand-400 hover:shadow-md transition-all duration-200 cursor-zoom-in"
+              <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 lg:items-stretch justify-between h-full">
+                {/* Specs Column */}
+                <div
+                  className={`w-full lg:w-[45%] ${index % 2 !== 0 ? "lg:order-2" : ""}`}
+                >
+                  {sub.detailedCopy && (
+                    <p className="text-sm text-neutral-600 leading-relaxed mb-6">
+                      {sub.detailedCopy}
+                    </p>
+                  )}
+                  <div className="bg-neutral-white border border-neutral-200 rounded-xl p-6 mb-6">
+                    <h4 className="text-xs font-bold text-neutral-800 uppercase tracking-widest mb-4">
+                      Technical Specifications
+                    </h4>
+                    <ul className="space-y-2.5">
+                      {sub.features.map((spec, specIdx) => (
+                        <li
+                          key={specIdx}
+                          className="flex items-start gap-2.5 text-xs text-neutral-700"
                         >
-                          <Image
-                            src={img}
-                            alt={`${sub.name} design ${i + 1}`}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 15vw"
-                          />
-                          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/50 to-transparent p-2 translate-y-full group-hover:translate-y-0 transition-transform duration-200">
-                            <span className="text-[9px] text-white font-semibold">
-                              Design {i + 1}
-                            </span>
-                          </div>
-                        </div>
+                          <svg
+                            className="w-4 h-4 text-brand-600 mt-0.5 shrink-0"
+                            viewBox="0 0 20 20"
+                            fill="currentColor"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z"
+                              clipRule="evenodd"
+                            />
+                          </svg>
+                          {spec}
+                        </li>
                       ))}
-                    </div>
+                    </ul>
                   </div>
-                )}
+                  <ButtonLink
+                    href={`/contact?category=${category.id}&type=${sub.id}`}
+                    variant="primary"
+                    size="md"
+                  >
+                    Inquire About {sub.name}
+                  </ButtonLink>
+                </div>
+
+                {/* Gallery Column — ALL images inline */}
+                <div
+                  className={`w-full lg:w-[45%] ${index % 2 !== 0 ? "lg:order-1" : ""}`}
+                >
+                  {images.length === 0 ? (
+                    <div className="w-full max-w-lg mx-auto lg:ml-auto lg:mr-0 h-full">
+                      <div className="relative h-full min-h-[300px] rounded-xl overflow-hidden">
+                        <PlaceholderImage
+                          src={sub.image}
+                          alt={sub.name}
+                          fill
+                          className="object-contain object-center"
+                          sizes="(max-width: 500px) 80vw, 60vw"
+                          label={sub.name}
+                        />
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        {images.map((img, i) => (
+                          <div
+                            key={i}
+                            className="group relative aspect-square rounded-lg overflow-hidden bg-neutral-100 border border-neutral-200 hover:border-brand-400 hover:shadow-md transition-all duration-200"
+                          >
+                            <Image
+                              src={img}
+                              alt={sub.name}
+                              fill
+                              className="object-cover group-hover:scale-105 transition-transform duration-300"
+                              sizes="(max-width: 340px) 25vw, (max-width: 1024px) 33vw, 20vw"
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
               </div>
-            </div>
             </AnimatedFadeIn>
           </SectionWrapper>
         );
@@ -235,28 +241,30 @@ export default async function ProductFamilyPage({ params }: PageProps) {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
             {categoryCerts.map((cert, index) => (
-              <AnimatedFadeIn key={cert.id} delay={index * 100} className="h-full">
-              <div
-                className="bg-white border border-neutral-200 p-5 rounded-xl shadow-sm flex items-center gap-5 hover:shadow-md transition-shadow duration-200 h-full"
+              <AnimatedFadeIn
+                key={cert.id}
+                delay={index * 100}
+                className="h-full"
               >
-                <div className="relative w-20 h-20 shrink-0 bg-neutral-50 rounded-lg border border-neutral-100 p-2 flex items-center justify-center">
-                  <Image 
-                    src={cert.logo} 
-                    alt={cert.name} 
-                    fill 
-                    className="object-contain p-1" 
-                    sizes="80px" 
-                  />
+                <div className="bg-white border border-neutral-200 p-5 rounded-xl shadow-sm flex items-center gap-5 hover:shadow-md transition-shadow duration-200 h-full">
+                  <div className="relative w-20 h-20 shrink-0 bg-neutral-50 rounded-lg border border-neutral-100 p-2 flex items-center justify-center">
+                    <Image
+                      src={cert.logo}
+                      alt={cert.name}
+                      fill
+                      className="object-cover object-center p-1"
+                      sizes="80px"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <h4 className="text-base font-bold text-neutral-black mb-1.5">
+                      {cert.name}
+                    </h4>
+                    <p className="text-xs text-neutral-600 leading-relaxed">
+                      {cert.description}
+                    </p>
+                  </div>
                 </div>
-                <div className="flex-1">
-                  <h4 className="text-base font-bold text-neutral-black mb-1.5">
-                    {cert.name}
-                  </h4>
-                  <p className="text-xs text-neutral-600 leading-relaxed">
-                    {cert.description}
-                  </p>
-                </div>
-              </div>
               </AnimatedFadeIn>
             ))}
           </div>

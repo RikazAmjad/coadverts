@@ -298,6 +298,9 @@ export const productCategories: ProductCategory[] = [
           "Custom sizes available",
         ],
         image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987216/towels_3_qhzxl4.jpg",
+        gallery: [
+          "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781987219/Towel_ei79hu.jpg",
+        ],
         certificationNote: "Safe non-toxic dye compliance.",
       },
     ],

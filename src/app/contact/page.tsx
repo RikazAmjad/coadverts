@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { ContactForm } from "./ContactForm";
 import { corporateInfo } from "@/lib/data";
+import Image from "next/image";
 
 export const metadata: Metadata = {
   title: "Request a B2B Quote",
@@ -39,13 +40,18 @@ export default function ContactPage() {
               {/* Sweden Office Card */}
               <div className="bg-surface-50 border border-neutral-200 rounded-xl p-6 hover:shadow-soft transition-base">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded bg-brand-700 text-white flex items-center justify-center font-bold text-xs select-none">
-                    SE
+                  <div className="w-8 h-8 rounded bg-brand-50 text-2xl flex items-center justify-center select-none border border-neutral-200 shadow-sm leading-none pb-0.5">
+                    <Image
+                      src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1782037782/sweden_lsjp9r.png"
+                      alt="Sweden"
+                      width={24}
+                      height={24}
+                    />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-neutral-black">
+                    <h4 className="text-base font-semibold text-neutral-black">
                       Sweden Headquarters
-                    </h3>
+                    </h4>
                     <p className="text-xs text-brand-700 font-medium">
                       Logistics, Billing & Design Liaison
                     </p>
@@ -80,13 +86,18 @@ export default function ContactPage() {
               {/* Pakistan Factory Card */}
               <div className="bg-surface-50 border border-neutral-200 rounded-xl p-6 hover:shadow-soft transition-base">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-8 h-8 rounded bg-brand-700 text-white flex items-center justify-center font-bold text-xs select-none">
-                    PK
+                  <div className="w-8 h-8 rounded bg-brand-50 text-2xl flex items-center justify-center select-none border border-neutral-200 shadow-sm leading-none pb-0.5">
+                    <Image
+                      src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1782037781/pak_ghsli4.png"
+                      alt="Pakistan"
+                      width={24}
+                      height={24}
+                    />
                   </div>
                   <div>
-                    <h3 className="text-base font-semibold text-neutral-black">
+                    <h4 className="text-base font-semibold text-neutral-black">
                       Pakistan Factory & Loom
-                    </h3>
+                    </h4>
                     <p className="text-xs text-brand-700 font-medium">
                       Manufacturing & Quality Inspection Hub
                     </p>
@@ -129,7 +140,7 @@ export default function ContactPage() {
                 <h3 className="text-xl font-heading font-semibold text-neutral-black mb-1">
                   Fill Out the B2B Inquiry Form
                 </h3>
-                <p className="text-sm text-neutral-600 mb-6">
+                <p className="text-sm text-neutral-600 my-6">
                   Provide detailed specifications to receive a binding manufacturing quote.
                 </p>
                 

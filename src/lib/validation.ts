@@ -23,12 +23,11 @@ export const contactFormSchema = z.object({
     .trim()
     .optional()
     .or(z.literal("")),
-  category: z
-    .string()
-    .max(100, "Category selection is invalid")
-    .trim()
-    .optional()
-    .or(z.literal("")),
+  countryCode: z.string().optional(),
+  categories: z
+    .array(z.string())
+    .max(20, "Too many categories selected")
+    .optional(),
   quantity: z
     .string()
     .max(50, "Quantity must be under 50 characters")

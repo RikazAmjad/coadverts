@@ -3,6 +3,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { CTABanner } from "@/components/CTABanner";
 import { ProductService } from "@/core/services/ProductService";
+import { AnimatedFadeIn } from "@/components/ui/AnimatedFadeIn";
 
 export const metadata: Metadata = {
   title: "Manufacturing & Supply Chain Services",
@@ -67,9 +68,9 @@ export default async function ServicesPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
           {servicesList.map((service, index) => (
+            <AnimatedFadeIn key={service.id} delay={index * 100} className="h-full">
             <div
-              key={service.id}
-              className="bg-surface-50 border border-neutral-200 rounded-xl p-8 hover:shadow-card hover:border-brand-400 transition-base flex flex-col md:flex-row gap-6 items-start"
+              className="h-full bg-surface-50 border border-neutral-200 rounded-xl p-8 hover:shadow-card hover:border-brand-400 transition-base flex flex-col md:flex-row gap-6 items-start"
             >
               <div className="w-12 h-12 rounded-lg bg-brand-100 flex items-center justify-center shrink-0">
                 {iconMap[service.icon] || (
@@ -111,6 +112,7 @@ export default async function ServicesPage() {
                 </ul>
               </div>
             </div>
+            </AnimatedFadeIn>
           ))}
         </div>
       </SectionWrapper>

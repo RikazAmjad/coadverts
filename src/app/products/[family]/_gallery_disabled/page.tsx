@@ -117,21 +117,15 @@ export default async function GalleryPage({ params }: PageProps) {
                 {images.map((img, i) => (
                   <div
                     key={i}
-                    className="group relative aspect-square rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200 hover:shadow-lg hover:border-neutral-300 transition-all duration-300 cursor-zoom-in"
+                    className="group relative aspect-square rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200 hover:shadow-lg hover:border-neutral-300 transition-all duration-300"
                   >
                     <Image
                       src={img}
-                      alt={`${sub.name} showcase image ${i + 1}`}
+                      alt={`${sub.name}`}
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                     />
-                    {/* Hover label */}
-                    <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/60 to-transparent p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
-                      <p className="text-white text-xs font-medium leading-tight">
-                        {sub.name} Specimen {i + 1}
-                      </p>
-                    </div>
                   </div>
                 ))}
               </div>
