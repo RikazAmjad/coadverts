@@ -162,9 +162,9 @@ export function Header() {
                 );
               })}
             </ul>
-            <ButtonLink href="/contact" size="sm" className="!text-neutral-white">
+            {/* <ButtonLink href="/contact" size="sm" className="!text-neutral-white">
               Get a Quote
-            </ButtonLink>
+            </ButtonLink> */}
           </div>
 
           {/* Mobile Menu Button */}
@@ -238,11 +238,11 @@ export function Header() {
                 );
               })}
             </ul>
-            <div className="mt-4 px-4">
+            {/* <div className="mt-4 px-4">
               <ButtonLink href="/contact" size="md" fullWidth>
                 Get a Quote
               </ButtonLink>
-            </div>
+            </div> */}
           </div>
         )}
       </nav>
