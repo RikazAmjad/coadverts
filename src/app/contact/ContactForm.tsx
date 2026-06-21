@@ -230,10 +230,12 @@ export function ContactForm() {
         <h3 className="text-xl font-heading font-semibold text-neutral-black mb-2">
           Quote Request Submitted
         </h3>
-        <p className="text-neutral-600 max-w-md mx-auto">
-          Thank you for your inquiry. Our team will review your requirements and
-          get back to you within 24 business hours.
-        </p>
+        <div className="w-full flex items-center justify-center">
+          <p className="text-neutral-600 max-w-md mx-auto text-center">
+            Thank you for your inquiry. Our team will review your requirements and
+            get back to you within 24 business hours.
+          </p>
+        </div>
         <button
           type="button"
           onClick={() => setSuccess(false)}
