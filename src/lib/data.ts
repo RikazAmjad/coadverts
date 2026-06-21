@@ -669,7 +669,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Finansförbundet",
     industry: "Financial Services",
     region: "Nordic",
-    logo: "/images/ref-finansforbundet.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782027936/Finansf%C3%B6rbundet-logotyp-webb_e9d0sh.png",
     note: "Custom branded cotton tote bags for member events and trade fairs.",
   },
   {
@@ -677,7 +677,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Storytel",
     industry: "Media & Publishing",
     region: "Nordic",
-    logo: "/images/ref-storytel.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782028045/storytel_color_pos_xs_rgb_owravu.png",
     note: "Promotional cotton bags for subscription campaigns across Scandinavia.",
   },
   {
@@ -685,7 +685,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Boulebar",
     industry: "Hospitality & Leisure",
     region: "Nordic",
-    logo: "/images/ref-boulebar.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782027984/boulebar-logotyp-2015_sgpgii.png",
     note: "Branded merchandise and promotional bags for venue events.",
   },
   {
@@ -693,15 +693,15 @@ export const references: ReferenceBlock[] = [
     clientName: "Demadly Sweden",
     industry: "Fashion & Retail",
     region: "Nordic",
-    logo: "/images/ref-demadly.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782027996/demadly_sweden_ssybpw.png",
     note: "Private label cotton bags for retail collections.",
   },
   {
     id: "fillipak",
-    clientName: "Fillipak",
+    clientName: "Fillipa k",
     industry: "Packaging & Distribution",
     region: "Europe",
-    logo: "/images/ref-fillipak.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782028007/fillipak-logo_pshzzt.png",
     note: "Bulk packaging and industrial bag supply.",
   },
   {
@@ -709,7 +709,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Sanoma",
     industry: "Media & Publishing",
     region: "Europe",
-    logo: "/images/ref-sanoma.jpg",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782028028/sanoma_u3v1zv.jpg",
     note: "Promotional merchandise bags for publishing campaigns.",
   },
   {
@@ -717,7 +717,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Tellkiddo",
     industry: "Children & Family",
     region: "Nordic",
-    logo: "/images/ref-tellkiddo.jpg",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782028054/tellkiddo-320x202_rdkbv3.jpg",
     note: "Custom cotton bags for children's retail brand.",
   },
   {
@@ -725,7 +725,7 @@ export const references: ReferenceBlock[] = [
     clientName: "HSR",
     industry: "Education & Research",
     region: "Nordic",
-    logo: "/images/ref-hsr.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782028015/HSR_f7cznt.png",
     note: "Branded bags for student and faculty outreach programmes.",
   },
   {
@@ -773,7 +773,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Taco Truck",
     industry: "Food & Beverage",
     region: "Nordic",
-    logo: "/images/placeholder-logo.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782032049/ElTacoTruck-svart-1_1_oczsyd.png",
     note: "Branded merchandise for food and beverage events.",
   },
   {
@@ -821,7 +821,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Veronica Virta",
     industry: "Fashion & Retail",
     region: "Nordic",
-    logo: "/images/placeholder-logo.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782032052/LOGGA-2_yukzjt.png",
     note: "Premium cotton bags for fashion retail collections.",
   },
   {
@@ -869,7 +869,7 @@ export const references: ReferenceBlock[] = [
     clientName: "Sitrus",
     industry: "Media & Publishing",
     region: "Nordic",
-    logo: "/images/placeholder-logo.png",
+    logo: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1782032053/sitrus_logotype_x_black_CMYK_vw13gj.png",
     note: "Customized promotional merchandise.",
   },
   {
