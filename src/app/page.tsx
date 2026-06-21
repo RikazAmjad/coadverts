@@ -12,11 +12,13 @@ import {
   productCategories,
   features,
   processSteps,
-  references,
   certifications,
 } from "@/lib/data";
+import { ProductService } from "@/core/services/ProductService";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const references = await ProductService.getAllReferences();
+
   return (
     <>
       {/* ===== HERO ===== */}

@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { CTABanner } from "@/components/CTABanner";
 import { ProductService } from "@/core/services/ProductService";
+import { AnimatedFadeIn } from "@/components/ui/AnimatedFadeIn";
 
 export const metadata: Metadata = {
   title: "B2B Client References",
@@ -51,47 +52,48 @@ export default async function ReferencesPage() {
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {regionRefs.map((ref) => (
-                  <div
-                    key={ref.id}
-                    className="bg-surface-50 border border-neutral-200 rounded-xl p-8 hover:shadow-card hover:border-brand-400 transition-base flex flex-col justify-between"
-                  >
-                    <div>
-                      <div className="flex items-start justify-between mb-4">
-                        <div>
-                          <h4 className="text-lg font-semibold text-neutral-black">
-                            {ref.clientName}
-                          </h4>
-                          <span className="text-xs font-medium text-neutral-500">
-                            {ref.industry}
+                {regionRefs.map((ref, index) => (
+                  <AnimatedFadeIn key={ref.id} delay={index * 100} className="h-full">
+                    <div
+                      className="h-full bg-surface-50 border border-neutral-200 rounded-xl p-8 hover:shadow-card hover:border-brand-400 transition-base flex flex-col justify-between"
+                    >
+                      <div>
+                        <div className="flex items-start justify-between mb-4">
+                          <div>
+                            <h4 className="text-lg font-semibold text-neutral-black">
+                              {ref.clientName}
+                            </h4>
+                            <span className="text-xs font-medium text-neutral-500">
+                              {ref.industry}
+                            </span>
+                          </div>
+                          <span className="text-xs text-neutral-600 bg-neutral-200 px-2.5 py-1 rounded-md">
+                            {ref.region}
                           </span>
                         </div>
-                        <span className="text-xs text-neutral-600 bg-neutral-200 px-2.5 py-1 rounded-md">
-                          {ref.region}
+                        {ref.note && (
+                          <p className="text-sm text-neutral-600 leading-relaxed italic border-l-2 border-brand-500 pl-4 py-1 mb-6">
+                            "{ref.note}"
+                          </p>
+                        )}
+                      </div>
+
+                      <div className="flex items-center gap-3 mt-4 pt-4 border-t border-neutral-200/50">
+                        <div className="w-16 h-8 relative flex items-center">
+                          <Image
+                            src={ref.logo}
+                            alt={ref.clientName}
+                            width={64}
+                            height={32}
+                            className="object-contain w-full h-full"
+                          />
+                        </div>
+                        <span className="text-xs text-neutral-500 font-semibold tracking-wider uppercase">
+                          Verified Production Run
                         </span>
                       </div>
-                      {ref.note && (
-                        <p className="text-sm text-neutral-600 leading-relaxed italic border-l-2 border-brand-500 pl-4 py-1 mb-6">
-                          "{ref.note}"
-                        </p>
-                      )}
                     </div>
-
-                    <div className="flex items-center gap-3 mt-4 pt-4 border-t border-neutral-200/50">
-                      <div className="w-16 h-8 relative flex items-center">
-                        <Image
-                          src={ref.logo}
-                          alt={ref.clientName}
-                          width={64}
-                          height={32}
-                          className="object-contain w-full h-full"
-                        />
-                      </div>
-                      <span className="text-xs text-neutral-500 font-semibold tracking-wider uppercase">
-                        Verified Production Run
-                      </span>
-                    </div>
-                  </div>
+                  </AnimatedFadeIn>
                 ))}
               </div>
             </div>

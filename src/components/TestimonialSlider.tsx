@@ -37,7 +37,7 @@ export function TestimonialSlider({ references }: TestimonialSliderProps) {
         </p>
 
         {/* Dot indicators */}
-        <div className="mt-10 flex items-center gap-2">
+        {/* <div className="mt-10 flex items-center gap-2">
           {references.map((_, i) => (
             <button
               key={i}
@@ -53,7 +53,7 @@ export function TestimonialSlider({ references }: TestimonialSliderProps) {
               }}
             />
           ))}
-        </div>
+        </div> */}
 
         {/* Prev / Next arrows */}
         <div className="mt-6 flex items-center gap-3">
