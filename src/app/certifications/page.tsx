@@ -4,6 +4,7 @@ import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { CTABanner } from "@/components/CTABanner";
 import { ProductService } from "@/core/services/ProductService";
+import { AnimatedFadeIn } from "@/components/ui/AnimatedFadeIn";
 
 export const metadata: Metadata = {
   title: "Certifications & Compliance Standards",
@@ -60,10 +61,10 @@ export default async function CertificationsPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {certificationsList.map((cert) => (
+          {certificationsList.map((cert, index) => (
+            <AnimatedFadeIn key={cert.id} delay={index * 100} className="h-full">
             <div
-              key={cert.id}
-              className="bg-neutral-white border border-neutral-200 rounded-xl p-8 hover:shadow-card hover:border-brand-400 transition-base flex flex-col justify-between"
+              className="h-full bg-neutral-white border border-neutral-200 rounded-xl p-8 hover:shadow-card hover:border-brand-400 transition-base flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between mb-6">
@@ -89,6 +90,7 @@ export default async function CertificationsPage() {
                 </span>
               </div>
             </div>
+            </AnimatedFadeIn>
           ))}
         </div>
       </SectionWrapper>

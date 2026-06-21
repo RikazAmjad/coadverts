@@ -5,6 +5,7 @@ import { ButtonLink } from "@/components/ui/Button";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { CTABanner } from "@/components/CTABanner";
 import { ProductService } from "@/core/services/ProductService";
+import { AnimatedFadeIn } from "@/components/ui/AnimatedFadeIn";
 
 export const metadata: Metadata = {
   title: "B2B Product Families & Catalog",
@@ -38,10 +39,10 @@ export default async function ProductsPage() {
 
         <div className="space-y-16">
           {categories.map((category, index) => (
-            <div
-              key={category.id}
-              className="bg-surface-50 border border-neutral-200 rounded-xl overflow-hidden shadow-soft p-6 md:p-8 hover:shadow-card hover:border-brand-400 transition-all duration-300"
-            >
+            <AnimatedFadeIn key={category.id} delay={index * 100}>
+              <div
+                className="bg-surface-50 border border-neutral-200 rounded-xl overflow-hidden shadow-soft p-6 md:p-8 hover:shadow-card hover:border-brand-400 transition-all duration-300"
+              >
               {/* Category Header */}
               <div className="flex flex-col lg:flex-row gap-6 justify-between items-start border-b border-neutral-200 pb-6 mb-6">
                 <div className="max-w-3xl">
@@ -134,6 +135,7 @@ export default async function ProductsPage() {
                 </ButtonLink>
               </div>
             </div>
+            </AnimatedFadeIn>
           ))}
         </div>
       </SectionWrapper>

@@ -8,6 +8,7 @@ import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
 import { ButtonLink } from "@/components/ui/Button";
 import { CTABanner } from "@/components/CTABanner";
 import { ProductService } from "@/core/services/ProductService";
+import { AnimatedFadeIn } from "@/components/ui/AnimatedFadeIn";
 
 interface PageProps {
   params: Promise<{ family: string }>;
@@ -115,6 +116,7 @@ export default async function ProductFamilyPage({ params }: PageProps) {
             background={index % 2 === 0 ? "beige-100" : "white"}
             padding="lg"
           >
+            <AnimatedFadeIn delay={100}>
             {/* Subcategory Header */}
             <div className="flex flex-col md:flex-row md:items-end gap-4 justify-between mb-8 pb-6 border-b border-neutral-200">
               <div>
@@ -215,6 +217,7 @@ export default async function ProductFamilyPage({ params }: PageProps) {
                 )}
               </div>
             </div>
+            </AnimatedFadeIn>
           </SectionWrapper>
         );
       })}
@@ -231,10 +234,10 @@ export default async function ProductFamilyPage({ params }: PageProps) {
             </h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-            {categoryCerts.map((cert) => (
+            {categoryCerts.map((cert, index) => (
+              <AnimatedFadeIn key={cert.id} delay={index * 100} className="h-full">
               <div
-                key={cert.id}
-                className="bg-white border border-neutral-200 p-5 rounded-xl shadow-sm flex items-center gap-5 hover:shadow-md transition-shadow duration-200"
+                className="bg-white border border-neutral-200 p-5 rounded-xl shadow-sm flex items-center gap-5 hover:shadow-md transition-shadow duration-200 h-full"
               >
                 <div className="relative w-20 h-20 shrink-0 bg-neutral-50 rounded-lg border border-neutral-100 p-2 flex items-center justify-center">
                   <Image 
@@ -254,6 +257,7 @@ export default async function ProductFamilyPage({ params }: PageProps) {
                   </p>
                 </div>
               </div>
+              </AnimatedFadeIn>
             ))}
           </div>
         </SectionWrapper>
