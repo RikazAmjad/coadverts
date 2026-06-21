@@ -54,7 +54,7 @@ export function AnimatedCategoryCard({ category, index }: AnimatedCategoryCardPr
             src={category.image} 
             alt={category.name} 
             fill 
-            className="object-cover transition-transform duration-700 hover:scale-105" 
+            className="object-contain transition-transform duration-700 hover:scale-105" 
           />
         </div>
         

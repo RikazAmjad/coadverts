@@ -51,7 +51,7 @@ export function ContactForm() {
   function handleChange(
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
+    >,
   ) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -81,7 +81,11 @@ export function ContactForm() {
     const file = e.target.files?.[0];
     setImageError("");
     if (!file) {
-      setFormData((prev) => ({ ...prev, customImage: "", customImageName: "" }));
+      setFormData((prev) => ({
+        ...prev,
+        customImage: "",
+        customImageName: "",
+      }));
       return;
     }
 
@@ -124,7 +128,10 @@ export function ContactForm() {
     if (!formData.company.trim() || formData.company.trim().length < 2) {
       newErrors.company = "Company name must be at least 2 characters";
     }
-    if (!formData.email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+    if (
+      !formData.email.trim() ||
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)
+    ) {
       newErrors.email = "Please enter a valid email address";
     }
     if (!formData.message.trim() || formData.message.trim().length < 10) {
@@ -132,8 +139,12 @@ export function ContactForm() {
     }
 
     if (formData.hasCustomBag) {
-      if (!formData.customDescription.trim() || formData.customDescription.trim().length < 10) {
-        newErrors.customDescription = "Please describe the custom bag design (min 10 characters)";
+      if (
+        !formData.customDescription.trim() ||
+        formData.customDescription.trim().length < 10
+      ) {
+        newErrors.customDescription =
+          "Please describe the custom bag design (min 10 characters)";
       }
     }
 
@@ -167,7 +178,9 @@ export function ContactForm() {
           }
           setErrors(fieldErrors);
         } else {
-          setServerError(data.message || "Something went wrong. Please try again.");
+          setServerError(
+            data.message || "Something went wrong. Please try again.",
+          );
         }
         return;
       }
@@ -190,7 +203,9 @@ export function ContactForm() {
       });
       setImageError("");
     } catch {
-      setServerError("Network error. Please check your connection and try again.");
+      setServerError(
+        "Network error. Please check your connection and try again.",
+      );
     } finally {
       setLoading(false);
     }
@@ -247,7 +262,10 @@ export function ContactForm() {
   return (
     <form onSubmit={handleSubmit} noValidate>
       {/* Honeypot — hidden from humans */}
-      <div className="absolute opacity-0 pointer-events-none h-0 overflow-hidden" aria-hidden="true">
+      <div
+        className="absolute opacity-0 pointer-events-none h-0 overflow-hidden"
+        aria-hidden="true"
+      >
         <label htmlFor="website">Website</label>
         <input
           type="text"
@@ -297,7 +315,10 @@ export function ContactForm() {
           error={errors.email}
         />
         <div className="flex flex-col gap-1.5">
-          <label htmlFor="phone" className="text-sm font-medium text-neutral-900">
+          <label
+            htmlFor="phone"
+            className="text-sm font-medium text-neutral-900"
+          >
             Phone
           </label>
           <div className="relative">
@@ -387,7 +408,10 @@ export function ContactForm() {
           />
         </div>
         <div className="ml-3 text-sm">
-          <label htmlFor="hasCustomBag" className="font-medium text-neutral-900 cursor-pointer select-none">
+          <label
+            htmlFor="hasCustomBag"
+            className="font-medium text-neutral-900 cursor-pointer select-none"
+          >
             I want a custom bag style / design not listed above
           </label>
           <p className="text-neutral-500">
@@ -402,7 +426,7 @@ export function ContactForm() {
           <h4 className="text-sm font-semibold text-brand-700 uppercase tracking-wider font-body">
             Custom Design Requirements
           </h4>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5 my-4">
             <div>
               <label className="block text-sm font-medium text-neutral-900 mb-1.5">
@@ -425,7 +449,7 @@ export function ContactForm() {
                 </p>
               )}
             </div>
-            
+
             <Input
               label="Custom Style Quantity"
               name="customQuantity"
