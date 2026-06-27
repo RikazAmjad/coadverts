@@ -291,11 +291,26 @@ export async function POST(request: NextRequest) {
       });
     }
 
+    const emailText = `
+New Quote Request from CoAdverts:
+
+Name: ${safe.name}
+Company: ${safe.company}
+Email: ${safe.email}
+Phone: ${safe.phone}
+Category: ${safe.category}
+Quantity: ${safe.quantity}
+${hasCustomBag ? `\nCustom Bag Details:\nDescription: ${safe.customDescription}\nQuantity: ${safe.customQuantity || "Not specified"}\n` : ""}
+Message:
+${safe.message}
+    `.trim();
+
     await transporter.sendMail({
       from: `"CoAdverts Website" <${smtpUser}>`,
       to: contactEmail,
       replyTo: email,
       subject: `Quote Request from ${safe.name} — ${safe.company}`,
+      text: emailText,
       html: emailHtml,
       attachments,
     });
