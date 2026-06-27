@@ -8,6 +8,7 @@ import { CTABanner } from "@/components/CTABanner";
 import { TestimonialSlider } from "@/components/TestimonialSlider";
 import { ProcessTimeline } from "@/components/ProcessTimeline";
 import { AnimatedCategoryCard } from "@/components/AnimatedCategoryCard";
+import { AnimatedFadeIn } from "@/components/ui/AnimatedFadeIn";
 import {
   productCategories,
   features,
@@ -26,7 +27,7 @@ export default async function HomePage() {
         <div className="container-wide relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-8 items-center">
             {/* Left Content */}
-            <div className="max-w-2xl relative z-20">
+            <AnimatedFadeIn delay={100} className="max-w-2xl relative z-20">
               <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading text-neutral-900 font-bold leading-[1.08] tracking-tight">
                 <span className="text-brand-700">Quality Products.</span>
                 <br />
@@ -57,10 +58,10 @@ export default async function HomePage() {
                   Inquire Now
                 </ButtonLink>
               </div>
-            </div>
+            </AnimatedFadeIn>
 
             {/* Right Content - Visuals */}
-            <div className="relative h-[500px] lg:h-[600px] w-full flex items-center justify-center lg:justify-end">
+            <AnimatedFadeIn delay={300} className="relative h-[500px] lg:h-[600px] w-full flex items-center justify-center lg:justify-end">
               {/* Decorative Background Blob or Shape (Optional) */}
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-white/50 rounded-full blur-3xl" />
               
@@ -109,7 +110,7 @@ export default async function HomePage() {
                   />
                 </div>
               </div>
-            </div>
+            </AnimatedFadeIn>
           </div>
         </div>
       </section>
@@ -246,39 +247,41 @@ export default async function HomePage() {
       </SectionWrapper>
 
       {/* ===== CERTIFICATES MARQUEE ===== */}
-      <section className="bg-surface-100 border-y border-surface-300 py-10">
-        <div className="container-wide mb-7 text-center">
-          <p className="text-brand-700 text-xs font-semibold uppercase tracking-widest font-body">
-            Internationally Certified &amp; Audited
-          </p>
-        </div>
-
-        {/* group wrapper — hover pauses the animation via CSS */}
-        <div className="marquee-wrapper group">
-          <div className="marquee-track">
-            {[
-              ...certifications,
-              ...certifications,
-              ...certifications,
-              ...certifications,
-            ].map((cert, i) => (
-              <div
-                key={i}
-                className="flex items-center justify-center mx-12 shrink-0"
-              >
-                <Image
-                  src={cert.logo}
-                  alt={cert.name}
-                  width={100}
-                  height={56}
-                  className="object-contain"
-                  unoptimized
-                />
-              </div>
-            ))}
+      <AnimatedFadeIn>
+        <section className="bg-surface-100 border-y border-surface-300 py-10">
+          <div className="container-wide mb-7 text-center">
+            <p className="text-brand-700 text-xs font-semibold uppercase tracking-widest font-body">
+              Internationally Certified &amp; Audited
+            </p>
           </div>
-        </div>
-      </section>
+
+          {/* group wrapper — hover pauses the animation via CSS */}
+          <div className="marquee-wrapper group">
+            <div className="marquee-track">
+              {[
+                ...certifications,
+                ...certifications,
+                ...certifications,
+                ...certifications,
+              ].map((cert, i) => (
+                <div
+                  key={i}
+                  className="flex items-center justify-center mx-12 shrink-0"
+                >
+                  <Image
+                    src={cert.logo}
+                    alt={cert.name}
+                    width={100}
+                    height={56}
+                    className="object-contain"
+                    unoptimized
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </AnimatedFadeIn>
 
       {/* ===== PROCESS OVERVIEW ===== */}
       <SectionWrapper background="beige-100" padding="lg">
@@ -305,12 +308,14 @@ export default async function HomePage() {
       </SectionWrapper>
 
       {/* ===== CTA BANNER ===== */}
-      <CTABanner
-        heading="Ready to Request a B2B Quote?"
-        subtext="Specify your required quantities, materials, custom printing, and timeline. Our Stockholm office will coordinate and return a quote."
-        buttonText="Get a Custom Quote"
-        buttonHref="/contact"
-      />
+      <AnimatedFadeIn delay={100}>
+        <CTABanner
+          heading="Ready to Request a B2B Quote?"
+          subtext="Specify your required quantities, materials, custom printing, and timeline. Our Stockholm office will coordinate and return a quote."
+          buttonText="Get a Custom Quote"
+          buttonHref="/contact"
+        />
+      </AnimatedFadeIn>
     </>
   );
 }
