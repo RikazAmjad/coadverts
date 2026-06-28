@@ -21,9 +21,9 @@ export const corporateInfo = {
   pakistan: {
     companyName: "MH Tex",
     regNumber: "023491-3",
-    address: "P-5, Street 01, Behind Jhang Sizing, Nawaz Park, Chack 279/RB Khurd, Kaleem Shaheed Park, Faisalabad, Pakistan",
-    email: "mhtextile.pk@gmail.com",
-    phone: "+92 321 66 74 655",
+    address: "Plot no 16 al mumtaz street, Choudry.Town behind j tex, 38000 Faisalabad, Pakistan",
+    email: "info@mhtextilw.com.pk, mumtaz_kb@yahoo.com",
+    phone: "+92-41-2690655, +92-321-6674655",
     role: "Manufacturing Base, Weaving & Stitching Facility",
     website: "www.mhtextile.com.pk",
   },

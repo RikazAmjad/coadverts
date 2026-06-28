@@ -561,7 +561,7 @@ ON CONFLICT (id) DO UPDATE SET
 -- G. OFFICES
 INSERT INTO company_offices (id, country, company_name, reg_number, address, visit_address, email, phone, role, website) VALUES
 ('sweden', 'Sweden', 'CoAdvert AB', '556892-9052', 'Kivra: 556892-9052, 106 31 Stockholm SE, Sweden', 'Stockholm, Sweden', 'customerservice@coadvert.com', '+46 76 042 87 17', 'Head Office, Design & Scandinavian Logistics Hub', 'www.coadvert.com'),
-('pakistan', 'Pakistan', 'MH Tex', '023491-3', 'P-5, Street 01, Behind Jhang Sizing, Nawaz Park, Chack 279/RB Khurd, Kaleem Shaheed Park, Faisalabad, Pakistan', NULL, 'mhtextile.pk@gmail.com', '+92 321 66 74 655', 'Manufacturing Base, Weaving & Stitching Facility', 'www.mhtextile.com.pk')
+('pakistan', 'Pakistan', 'MH Tex', '023491-3', 'Plot no 16 al mumtaz street, Choudry.Town behind j tex, 38000 Faisalabad, Pakistan', NULL, 'info@mhtextilw.com.pk, mumtaz_kb@yahoo.com', '+92-41-2690655, +92-321-6674655', 'Manufacturing Base, Weaving & Stitching Facility', 'www.mhtextile.com.pk')
 ON CONFLICT (id) DO UPDATE SET
     country = EXCLUDED.country,
     company_name = EXCLUDED.company_name,
