@@ -51,11 +51,17 @@ export default async function ReferencesPage() {
                 </span>
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div
+                className={`grid gap-6 ${
+                  region === "Nordic"
+                    ? "grid-cols-1 sm:grid-cols-2 md:grid-cols-3"
+                    : "grid-cols-1 sm:grid-cols-2"
+                }`}
+              >
                 {regionRefs.map((ref, index) => (
                   <AnimatedFadeIn key={ref.id} delay={index * 100} className="h-full">
                     <div
-                      className="h-full bg-surface-50 border border-neutral-200 rounded-xl p-8 hover:shadow-card hover:border-brand-400 transition-base flex flex-col justify-between"
+                      className="h-full bg-surface-50 border border-neutral-200 rounded-xl p-6 lg:p-7 hover:shadow-card hover:border-brand-400 transition-base flex flex-col justify-between"
                     >
                       <div>
                         <div className="flex items-start justify-between mb-4">
@@ -73,21 +79,44 @@ export default async function ReferencesPage() {
                         </div>
                         {ref.note && (
                           <p className="text-sm text-neutral-600 leading-relaxed italic border-l-2 border-brand-500 pl-4 py-1 mb-6">
-                            "{ref.note}"
+                            &quot;{ref.note}&quot;
                           </p>
                         )}
                       </div>
 
                       <div className="flex items-center gap-3 mt-4 pt-4 border-t border-neutral-200/50">
-                        <div className="w-16 h-8 relative flex items-center">
-                          <Image
-                            src={ref.logo}
-                            alt={ref.clientName}
-                            width={64}
-                            height={32}
-                            className="object-contain w-full h-full"
-                          />
-                        </div>
+                        {ref.logo ? (
+                          <div
+                            className={`w-10 h-10 rounded-lg p-1.5 flex items-center justify-center shrink-0 overflow-hidden shadow-xs border ${
+                              ref.id === "kpmg" || ref.logo.toLowerCase().includes("white")
+                                ? "bg-neutral-900 border-neutral-800"
+                                : "bg-white border-neutral-200"
+                            }`}
+                          >
+                            <Image
+                              src={ref.logo}
+                              alt={`${ref.clientName} logo`}
+                              width={40}
+                              height={40}
+                              className="w-full h-full object-contain"
+                              unoptimized
+                            />
+                          </div>
+                        ) : (
+                          <div
+                            className="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white font-semibold text-sm"
+                            style={{
+                              backgroundColor: `hsl(${ref.clientName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 360}, 55%, 45%)`,
+                            }}
+                          >
+                            {ref.clientName
+                              .split(/[\s\-\/]+/)
+                              .filter(Boolean)
+                              .slice(0, 2)
+                              .map((w) => w[0].toUpperCase())
+                              .join('')}
+                          </div>
+                        )}
                         <span className="text-xs text-neutral-500 font-semibold tracking-wider uppercase">
                           Verified Production Run
                         </span>

@@ -75,5 +75,6 @@ export interface ReferenceBlock {
   region: "Nordic" | "Europe" | "Americas" | "Global";
   logo: string;
   note?: string;
+  testimonial?: string;
 }
 

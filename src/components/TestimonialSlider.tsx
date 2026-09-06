@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Image from "next/image";
 
 import { ReferenceBlock } from "@/types";
@@ -11,6 +11,7 @@ interface TestimonialSliderProps {
 
 export function TestimonialSlider({ references }: TestimonialSliderProps) {
   const [active, setActive] = useState(0);
+  const isPaused = useRef(false);
 
   const prev = useCallback(() =>
     setActive((i) => (i - 1 + references.length) % references.length), [references.length]);
@@ -18,22 +19,34 @@ export function TestimonialSlider({ references }: TestimonialSliderProps) {
   const next = useCallback(() =>
     setActive((i) => (i + 1) % references.length), [references.length]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isPaused.current) {
+        setActive((i) => (i + 1) % references.length);
+      }
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [references.length]);
+
   const current = references[active];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
+    <div
+      className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center"
+      onMouseEnter={() => { isPaused.current = true; }}
+      onMouseLeave={() => { isPaused.current = false; }}
+    >
       {/* ── Left panel ── */}
       <div>
         <p className="text-brand-700 text-xs font-semibold uppercase tracking-widest mb-3 font-body">
-          Trusted by 100+ Organisations
+          Trusted by Leading Brands
         </p>
         <h2 className="text-balance leading-tight">
-          Loved by Brands Across Europe
+          Premium Packaging for Europe&apos;s Best
         </h2>
         <p className="mt-4 text-neutral-600 leading-relaxed max-w-sm">
-          From Nordic media giants to boutique fashion labels — our clients trust
-          CoAdvert for quality, compliance, and on-time delivery.
+          From Nordic publishers to premium fashion houses, brands trust CoAdvert
+          for custom branded bags, quality packaging, and on time delivery.
         </p>
 
         {/* Dot indicators */}
@@ -106,7 +119,7 @@ export function TestimonialSlider({ references }: TestimonialSliderProps) {
 
           {/* Quote / note */}
           <p className="text-neutral-700 text-base leading-relaxed">
-            "{current.note}"
+            &quot;{current.testimonial || current.note}&quot;
           </p>
 
           {/* Divider */}
@@ -114,16 +127,38 @@ export function TestimonialSlider({ references }: TestimonialSliderProps) {
 
           {/* Client identity */}
           <div className="flex items-center gap-4">
-            <div className="w-12 h-12 rounded-xl bg-surface-100 border border-neutral-200 flex items-center justify-center overflow-hidden shrink-0">
-              <Image
-                src={current.logo}
-                alt={`${current.clientName} logo`}
-                width={44}
-                height={44}
-                className="object-contain p-1"
-                unoptimized
-              />
-            </div>
+            {current.logo ? (
+              <div
+                className={`w-12 h-12 rounded-xl p-2 flex items-center justify-center shrink-0 overflow-hidden shadow-xs border ${
+                  current.id === "kpmg" || current.logo.toLowerCase().includes("white")
+                    ? "bg-neutral-900 border-neutral-800"
+                    : "bg-surface-100 border-neutral-200"
+                }`}
+              >
+                <Image
+                  src={current.logo}
+                  alt={`${current.clientName} logo`}
+                  width={48}
+                  height={48}
+                  className="w-full h-full object-contain"
+                  unoptimized
+                />
+              </div>
+            ) : (
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-white font-bold text-base"
+                style={{
+                  backgroundColor: `hsl(${current.clientName.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0) % 360}, 55%, 45%)`,
+                }}
+              >
+                {current.clientName
+                  .split(/[\s\-\/]+/)
+                  .filter(Boolean)
+                  .slice(0, 2)
+                  .map((w) => w[0].toUpperCase())
+                  .join('')}
+              </div>
+            )}
             <div>
               <p className="font-semibold text-neutral-900 font-heading text-sm">
                 {current.clientName}
