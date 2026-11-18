@@ -14,15 +14,15 @@ export const metadata: Metadata = {
 
 // Helper to render logo — uses real image if path starts with /, otherwise renders text badge
 function CertLogo({ logo, name }: { logo: string; name: string }) {
-  if (logo.startsWith("/")) {
+  if (logo.startsWith("/") || logo.startsWith("http")) {
     return (
       <div className="w-16 h-16 relative flex items-center justify-center">
         <Image
           src={logo}
           alt={name}
-          width={64}
-          height={64}
-          className="object-contain w-full h-full"
+          fill
+          className="object-contain"
+          sizes="64px"
         />
       </div>
     );

@@ -14,16 +14,16 @@ export const corporateInfo = {
     address: "Kivra: 556892-9052, 106 31 Stockholm SE, Sweden",
     visitAddress: "Stockholm, Sweden",
     email: "customerservice@coadvert.com",
-    phone: "+46 76 042 87 17",
+    phone: "",
     role: "Head Office, Design & Scandinavian Logistics Hub",
     website: "www.coadvert.com",
   },
   pakistan: {
     companyName: "MH Tex",
     regNumber: "023491-3",
-    address: "Plot no 16 al mumtaz street, Choudry.Town behind j tex, 38000 Faisalabad, Pakistan",
+    address: "Plot No 16 Al Mumtaz Street, Choudry Town Behind J Tex, 38000 Faisalabad, Pakistan",
     email: "info@mhtextilw.com.pk, mumtaz_kb@yahoo.com",
-    phone: "+92-41-2690655, +92-321-6674655",
+    phone: "+92-41-2690655",
     role: "Manufacturing Base, Weaving & Stitching Facility",
     website: "www.mhtextile.com.pk",
   },
@@ -36,7 +36,7 @@ export const productCategories: ProductCategory[] = [
     description:
       "Cotton, organic, recycled, non-woven, PP woven, and rug bags. Customised designs, multiple weights and printing options.",
     longDescription:
-      "CoAdvert AB Sweden and MH Tex, Pakistan is the legacy of a family associated with cotton and cotton products for the last 47 years. Cotton being biodegradable, natural and breathable fabric has been used by humans for thousands of years. Cotton Bags provide long-time durability and most impressions than any other give-away product.",
+      "CoAdvert AB Sweden is the legacy of a family associated with cotton and cotton products for the last 47 years. Cotton being biodegradable, natural and breathable fabric has been used by humans for thousands of years. Cotton Bags provide long-time durability and most impressions than any other give-away product.",
     image: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg",
     heroImage: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg",
     certifications: ["gots", "gots-cu", "fairtrade", "oeko-tex", "recycled", "ethically-made"],

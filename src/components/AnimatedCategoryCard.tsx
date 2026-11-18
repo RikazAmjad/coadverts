@@ -3,19 +3,21 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { ButtonLink } from "./ui/Button";
+import type { ProductCategory } from "@/types";
 
 interface AnimatedCategoryCardProps {
-  category: any;
+  category: ProductCategory;
   index: number;
 }
 
 export function AnimatedCategoryCard({ category, index }: AnimatedCategoryCardProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [hasRendered, setHasRendered] = useState(false);
 
   useEffect(() => {
-    setHasRendered(true);
+    const node = ref.current;
+    if (!node) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         setIsVisible(entry.isIntersecting);
@@ -26,14 +28,10 @@ export function AnimatedCategoryCard({ category, index }: AnimatedCategoryCardPr
       }
     );
     
-    if (ref.current) {
-      observer.observe(ref.current);
-    }
+    observer.observe(node);
     
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
-      }
+      observer.disconnect();
     };
   }, []);
 
@@ -43,8 +41,7 @@ export function AnimatedCategoryCard({ category, index }: AnimatedCategoryCardPr
     <div 
       ref={ref}
       className={`transition-all duration-1000 ease-[cubic-bezier(0.25,0.8,0.25,1)] transform w-full py-8 md:py-16 ${
-        !hasRendered ? "opacity-0 translate-y-12" :
-        isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-16 scale-95"
+        isVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-95"
       }`}
     >
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
@@ -54,6 +51,7 @@ export function AnimatedCategoryCard({ category, index }: AnimatedCategoryCardPr
             src={category.image} 
             alt={category.name} 
             fill 
+            sizes="(max-width: 768px) 100vw, 50vw"
             className="object-contain transition-transform duration-700 hover:scale-105" 
           />
         </div>

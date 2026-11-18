@@ -10,7 +10,7 @@ import { AnimatedFadeIn } from "@/components/ui/AnimatedFadeIn";
 export const metadata: Metadata = {
   title: "B2B Product Families & Catalog",
   description:
-    "Explore our 5 major product families: Bags, Safety Gloves, Towels & Bathrobes, T-Shirts & Beanies, and Bandanas. Fully customized manufacturing.",
+    "Explore our 8 major product families: Bags, Safety Gloves, Towels & Bathrobes, T-Shirts & Beanies, Bandanas, Caps, Bedsheet & Linen, and Rugs & Carpets. Fully customized manufacturing.",
 };
 
 export default async function ProductsPage() {

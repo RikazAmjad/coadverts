@@ -36,6 +36,7 @@ export function Footer() {
                 width={110}
                 height={36}
                 className="h-9 w-auto object-contain"
+                style={{ width: "auto", height: "auto" }}
               />
             </Link>
             <p className="text-sm text-neutral-600 leading-relaxed max-w-xs mb-4">
@@ -101,14 +102,22 @@ export function Footer() {
                   {corporateInfo.sweden.companyName}
                 </p>
                 <p className="text-xs text-neutral-500 leading-tight">
+                  Kivra: {corporateInfo.sweden.regNumber}
+                </p>
+                <p className="text-xs text-neutral-500 leading-tight">
+                  106 31 Stockholm SE
+                </p>
+                <p className="text-xs text-neutral-500 leading-tight">
                   Reg: {corporateInfo.sweden.regNumber}
                 </p>
                 <p className="text-xs text-neutral-500 leading-tight">
-                  {corporateInfo.sweden.address}
+                  Sweden
                 </p>
-                <p className="text-xs text-neutral-700 mt-1">
-                  {corporateInfo.sweden.phone}
-                </p>
+                {corporateInfo.sweden.phone && (
+                  <p className="text-xs text-neutral-700 mt-1">
+                    {corporateInfo.sweden.phone}
+                  </p>
+                )}
               </div>
 
               {/* Pakistan */}

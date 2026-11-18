@@ -2,7 +2,6 @@ import Image from "next/image";
 import { ButtonLink } from "@/components/ui/Button";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
-import { CategoryCard } from "@/components/CategoryCard";
 import { FeatureCard } from "@/components/FeatureCard";
 import { CTABanner } from "@/components/CTABanner";
 import { TestimonialSlider } from "@/components/TestimonialSlider";
@@ -34,12 +33,12 @@ export default async function HomePage() {
                 <span className="text-neutral-900">Delivered Globally.</span>
               </h1>
               <p className="mt-6 text-base md:text-lg text-neutral-700 leading-relaxed max-w-xl">
-                CoAdvert AB Sweden and MH Tex Pakistan — a family legacy of 47
-                years in cotton and textile manufacturing, delivering to customers
-                across the world.
+                CoAdvert AB Sweden, a family legacy of 47 years in cotton, bags
+                and textile manufacturing, delivering to customers across the
+                world.
               </p>
               <span className="text-brand-800 text-xs md:text-sm font-semibold uppercase tracking-widest mb-6 block font-body bg-brand-100/80 backdrop-blur-sm px-4 py-2 rounded-full w-fit border border-brand-200 my-2">
-                CoAdvert AB Sweden • MH Tex Pakistan
+                CoAdvert AB Sweden
               </span>
               <div className="mt-10 flex flex-wrap gap-4">
                 <ButtonLink
@@ -68,12 +67,12 @@ export default async function HomePage() {
               {/* Main Subject Image */}
               <div className="relative z-10 w-full h-full max-w-[500px] right-0 md:right-10 mix-blend-multiply rounded-3xl overflow-hidden border border-neutral-200">
                 <Image
-                  src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781903116/Gemini_Generated_Image_42xo0k42xo0k42xo_qgpnnb.png"
+                  src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1795027861/lady_pub17e.jpg"
                   alt="CoAdvert Model"
                   fill
+                  sizes="(max-width: 1024px) 100vw, 500px"
                   className="object-cover object-top"
                   priority
-                  unoptimized
                 />
               </div>
 
@@ -84,6 +83,7 @@ export default async function HomePage() {
                     src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg"
                     alt="Cotton Bag"
                     fill
+                    sizes="(max-width: 768px) 160px, 192px"
                     className="object-cover"
                   />
                 </div>
@@ -95,6 +95,7 @@ export default async function HomePage() {
                     src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905036/45993898_189564455283064_1450101913998589952_n_q1krvn.jpg"
                     alt="Customized Cap"
                     fill
+                    sizes="(max-width: 768px) 176px, 208px"
                     className="object-cover"
                   />
                 </div>
@@ -106,6 +107,7 @@ export default async function HomePage() {
                     src="https://res.cloudinary.com/dqgen2gxh/image/upload/v1781905109/JackAndCoke_logo_tshirt-skiss_dga62d.png"
                     alt="Customized T-Shirt"
                     fill
+                    sizes="(max-width: 768px) 128px, 160px"
                     className="object-cover"
                   />
                 </div>
@@ -145,13 +147,13 @@ export default async function HomePage() {
               The CoAdverts Legacy
             </p>
             <h2 className="text-balance leading-tight">
-              CoAdvert AB Sweden &amp; MH Tex Pakistan
+              CoAdvert AB Sweden
             </h2>
             <p className="mt-5 text-neutral-600 leading-relaxed">
-              CoAdvert AB Sweden and MH Tex, Pakistan is the legacy of a family
-              associated with cotton and cotton products for the last 47 years.
-              A humble grey cloth trading shop later evolved to be a
-              manufacturer and exporter of cotton products around the world.
+              CoAdvert AB Sweden is the legacy of a family associated with cotton
+              and cotton products for the last 47 years. A humble grey cloth
+              trading shop later evolved to be a manufacturer and exporter of
+              cotton products around the world.
             </p>
             <p className="mt-4 text-neutral-600 leading-relaxed">
               Till today, the organisation remains a family-owned business
@@ -257,7 +259,7 @@ export default async function HomePage() {
 
           {/* group wrapper — hover pauses the animation via CSS */}
           <div className="marquee-wrapper group">
-            <div className="marquee-track">
+            <div className="marquee-track items-center">
               {[
                 ...certifications,
                 ...certifications,
@@ -266,15 +268,14 @@ export default async function HomePage() {
               ].map((cert, i) => (
                 <div
                   key={i}
-                  className="flex items-center justify-center mx-12 shrink-0"
+                  className="relative h-14 w-28 mx-8 shrink-0 flex items-center justify-center"
                 >
                   <Image
                     src={cert.logo}
                     alt={cert.name}
-                    width={100}
-                    height={56}
+                    fill
+                    sizes="112px"
                     className="object-contain"
-                    unoptimized
                   />
                 </div>
               ))}

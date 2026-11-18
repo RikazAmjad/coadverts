@@ -4,7 +4,7 @@ import { useState, useEffect, type FormEvent } from "react";
 import { useSearchParams } from "next/navigation";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
-import { Select, type SelectItem } from "@/components/ui/Select";
+import type { SelectItem } from "@/components/ui/Select";
 import { MultiSelect } from "@/components/ui/MultiSelect";
 import { Button } from "@/components/ui/Button";
 import { productCategories } from "@/lib/data";
@@ -22,29 +22,38 @@ export function ContactForm() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [imageError, setImageError] = useState("");
 
-  const [formData, setFormData] = useState({
-    name: "",
-    company: "",
-    email: "",
-    countryCode: "SE",
-    phone: "",
-    categories: [] as string[],
-    quantity: "",
-    message: "",
-    hasCustomBag: false,
-    customDescription: "",
-    customQuantity: "",
-    customImage: "",
-    customImageName: "",
+  const [formData, setFormData] = useState(() => {
+    const categoryParam = searchParams.get("category");
+    const typeParam = searchParams.get("type");
+    const initialCats = typeParam ? [typeParam] : categoryParam ? [categoryParam] : [];
+    return {
+      name: "",
+      company: "",
+      email: "",
+      countryCode: "SE",
+      phone: "",
+      categories: initialCats,
+      quantity: "",
+      message: "",
+      hasCustomBag: false,
+      customDescription: "",
+      customQuantity: "",
+      customImage: "",
+      customImageName: "",
+    };
   });
 
   useEffect(() => {
     const categoryParam = searchParams.get("category");
     const typeParam = searchParams.get("type");
-    if (typeParam) {
-      setFormData((prev) => ({ ...prev, categories: [typeParam] }));
-    } else if (categoryParam) {
-      setFormData((prev) => ({ ...prev, categories: [categoryParam] }));
+    const target = typeParam || categoryParam;
+    if (target) {
+      queueMicrotask(() => {
+        setFormData((prev) => {
+          if (prev.categories.includes(target)) return prev;
+          return { ...prev, categories: [target] };
+        });
+      });
     }
   }, [searchParams]);
 

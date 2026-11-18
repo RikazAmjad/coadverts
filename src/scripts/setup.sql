@@ -253,7 +253,7 @@ ON CONFLICT (id) DO UPDATE SET
 INSERT INTO product_categories (id, name, description, long_description, image_url, hero_image_url, meta_title, meta_description) VALUES
 ('bags', 'Bags', 
  'Cotton, organic, recycled, non-woven, PP woven, and rug bags. Customised designs, multiple weights and printing options.',
- 'CoAdvert AB Sweden and MH Tex, Pakistan is the legacy of a family associated with cotton and cotton products for the last 47 years. Cotton being biodegradable, natural and breathable fabric has been used by humans for thousands of years. Cotton Bags provide long-time durability and most impressions than any other give-away product.',
+ 'CoAdvert AB Sweden is the legacy of a family associated with cotton and cotton products for the last 47 years. Cotton being biodegradable, natural and breathable fabric has been used by humans for thousands of years. Cotton Bags provide long-time durability and most impressions than any other give-away product.',
  'https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg', 'https://res.cloudinary.com/dqgen2gxh/image/upload/v1781812310/18_rpungm.jpg',
  'Bags B2B Wholesale Manufacturing | CoAdverts', 'Wholesale B2B organic, cotton, recycled and PP-woven bag production.'),
 
@@ -560,8 +560,8 @@ ON CONFLICT (id) DO UPDATE SET
 
 -- G. OFFICES
 INSERT INTO company_offices (id, country, company_name, reg_number, address, visit_address, email, phone, role, website) VALUES
-('sweden', 'Sweden', 'CoAdvert AB', '556892-9052', 'Kivra: 556892-9052, 106 31 Stockholm SE, Sweden', 'Stockholm, Sweden', 'customerservice@coadvert.com', '+46 76 042 87 17', 'Head Office, Design & Scandinavian Logistics Hub', 'www.coadvert.com'),
-('pakistan', 'Pakistan', 'MH Tex', '023491-3', 'Plot no 16 al mumtaz street, Choudry.Town behind j tex, 38000 Faisalabad, Pakistan', NULL, 'info@mhtextilw.com.pk, mumtaz_kb@yahoo.com', '+92-41-2690655, +92-321-6674655', 'Manufacturing Base, Weaving & Stitching Facility', 'www.mhtextile.com.pk')
+('sweden', 'Sweden', 'CoAdvert AB', '556892-9052', 'Kivra: 556892-9052, 106 31 Stockholm SE, Sweden', 'Stockholm, Sweden', 'customerservice@coadvert.com', NULL, 'Head Office, Design & Scandinavian Logistics Hub', 'www.coadvert.com'),
+('pakistan', 'Pakistan', 'MH Tex', '023491-3', 'Plot No 16 Al Mumtaz Street, Choudry Town Behind J Tex, 38000 Faisalabad, Pakistan', NULL, 'info@mhtextilw.com.pk, mumtaz_kb@yahoo.com', '+92-41-2690655', 'Manufacturing Base, Weaving & Stitching Facility', 'www.mhtextile.com.pk')
 ON CONFLICT (id) DO UPDATE SET
     country = EXCLUDED.country,
     company_name = EXCLUDED.company_name,

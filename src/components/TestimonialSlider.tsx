@@ -114,7 +114,7 @@ export function TestimonialSlider({ references }: TestimonialSliderProps) {
             className="text-7xl leading-none font-heading text-brand-100 select-none mb-2"
             aria-hidden
           >
-            "
+            &ldquo;
           </div>
 
           {/* Quote / note */}

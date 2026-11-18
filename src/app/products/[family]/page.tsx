@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
-import Link from "next/link";
 import { PageHeader } from "@/components/ui/PageHeader";
 import { SectionWrapper } from "@/components/ui/SectionWrapper";
 import { PlaceholderImage } from "@/components/ui/PlaceholderImage";
@@ -29,9 +28,32 @@ export async function generateMetadata({
   const { family } = await params;
   const category = await ProductService.getCategoryById(family);
   if (!category) return { title: "Category Not Found" };
+
+  const title = `${category.name} Wholesale Manufacturing & Export`;
+  const description = category.longDescription || category.description;
+  const image = category.heroImage || category.image;
+
   return {
-    title: `${category.name} B2B Wholesale Manufacturing`,
-    description: category.description,
+    title,
+    description,
+    openGraph: {
+      title: `${title} | CoAdverts`,
+      description,
+      images: [
+        {
+          url: image,
+          width: 1200,
+          height: 630,
+          alt: `${category.name} Wholesale Manufacturing`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${title} | CoAdverts`,
+      description,
+      images: [image],
+    },
   };
 }
 
@@ -45,8 +67,31 @@ export default async function ProductFamilyPage({ params }: PageProps) {
     category.certifications?.includes(cert.id),
   );
 
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `Custom Wholesale ${category.name}`,
+    description: category.description,
+    image: category.heroImage || category.image,
+    brand: {
+      "@type": "Brand",
+      name: "CoAdverts",
+    },
+    offers: {
+      "@type": "AggregateOffer",
+      priceCurrency: "EUR",
+      availability: "https://schema.org/InStock",
+      price: "0",
+      description: "Wholesale B2B pricing on request",
+    },
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
       <PageHeader
         title={`${category.name} Range`}
         subtitle={category.description}
@@ -101,7 +146,7 @@ export default async function ProductFamilyPage({ params }: PageProps) {
               alt={category.name}
               fill
               className="object-contain"
-              // sizes="(max-width: 800px) 80vw, 60vw"
+              sizes="(max-width: 1024px) 100vw, 50vw"
               label={category.name}
             />
           </div>

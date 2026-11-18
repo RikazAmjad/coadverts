@@ -16,41 +16,100 @@ const playfair = Playfair_Display({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://coadverts.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "CoAdverts",
+    default: "CoAdverts | Custom Wholesale Bags & Sustainable Textile Manufacturer",
     template: "%s | CoAdverts",
   },
   description:
-    "CoAdverts manufactures and supplies custom wholesale bags for businesses, distributors, and retail brands worldwide. Quality craftsmanship, scalable production, global delivery.",
+    "CoAdverts manufactures and supplies custom wholesale bags and sustainable textiles for businesses, distributors, and retail brands worldwide. 47-year family legacy.",
   keywords: [
     "wholesale bags",
-    "bag manufacturing",
-    "custom bags",
-    "bulk bags",
-    "tote bags wholesale",
-    "promotional bags",
-    "B2B bags",
-    "bag supplier",
+    "cotton bag manufacturer",
+    "custom bags Sweden",
+    "bulk tote bags",
+    "sustainable bags wholesale",
+    "promotional bags B2B",
+    "textile manufacturing",
+    "GOTS certified cotton bags",
+    "fairtrade bags supplier",
   ],
+  alternates: {
+    canonical: "./",
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
+    url: siteUrl,
     siteName: "CoAdverts",
-    title: "CoAdverts",
+    title: "CoAdverts | Custom Wholesale Bags & Sustainable Textile Manufacturer",
     description:
-      "Custom wholesale bag manufacturing for businesses worldwide. Shopping bags, industrial packaging, promotional bags — all crafted to your specifications.",
+      "Custom wholesale bag and textile manufacturing for businesses worldwide. Quality craftsmanship, ethical production, global delivery.",
+    images: [
+      {
+        url: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1795027861/lady_pub17e.jpg",
+        width: 1200,
+        height: 630,
+        alt: "CoAdverts Wholesale Cotton Bags & Textiles",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CoAdverts",
+    title: "CoAdverts | Custom Wholesale Bags & Sustainable Textile Manufacturer",
     description:
-      "Custom wholesale bag manufacturing for businesses worldwide.",
+      "Custom wholesale bag and textile manufacturing for businesses worldwide. Quality craftsmanship, ethical production, global delivery.",
+    images: ["https://res.cloudinary.com/dqgen2gxh/image/upload/v1795027861/lady_pub17e.jpg"],
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}/#organization`,
+      name: "CoAdvert AB",
+      alternateName: "CoAdverts",
+      url: siteUrl,
+      logo: {
+        "@type": "ImageObject",
+        url: "https://res.cloudinary.com/dqgen2gxh/image/upload/v1781990237/Logo_CoAdvert_New_bxed4p.png",
+      },
+      email: "customerservice@coadvert.com",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: "Kivra: 556892-9052",
+        postalCode: "106 31",
+        addressLocality: "Stockholm",
+        addressCountry: "SE",
+      },
+      sameAs: [],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}/#website`,
+      url: siteUrl,
+      name: "CoAdverts",
+      publisher: {
+        "@id": `${siteUrl}/#organization`,
+      },
+    },
+  ],
 };
 
 export default function RootLayout({
@@ -61,9 +120,16 @@ export default function RootLayout({
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${inter.variable} ${playfair.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
+      <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <Header />
         <main className="flex-1">{children}</main>
         <Footer />

@@ -77,9 +77,11 @@ export default function ContactPage() {
                       {corporateInfo.sweden.email}
                     </a>
                   </p>
-                  <p>
-                    <strong className="text-neutral-800">Phone:</strong> {corporateInfo.sweden.phone}
-                  </p>
+                  {corporateInfo.sweden.phone && (
+                    <p>
+                      <strong className="text-neutral-800">Phone:</strong> {corporateInfo.sweden.phone}
+                    </p>
+                  )}
                 </div>
               </div>
 
